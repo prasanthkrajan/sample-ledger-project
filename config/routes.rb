@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'cashflow#index'
+  root to: 'ledgers#index'
   
-  resources :cashflow, only: :index
+  resources :ledgers, only: :index
 end

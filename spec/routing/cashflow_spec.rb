@@ -10,6 +10,7 @@ RSpec.describe CashflowController, type: :routing do
   end
 
   it 'does not support other generic routes' do
+    expect(get('/cashflow/new')).not_to be_routable
     expect(get('/cashflow/1')).not_to be_routable
     expect(post('/cashflow')).not_to be_routable
     expect(delete('/cashflow/1')).not_to be_routable

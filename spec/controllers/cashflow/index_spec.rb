@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CashflowController do
+RSpec.describe CashflowController, type: :controller do
   describe "GET index" do
     subject { get :index }
 

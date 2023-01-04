@@ -1,54 +1,27 @@
 .container
 	.heading
 		My Ledger
-	.total-entries
-		Total Entries: 10
-	.content
-		%table.table.table-striped
-			%thead
-				%tr
-					%td.col-3 Amount
-					%td.col-5 Description
-					%td.col-4 Datetime
-			%tbody
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
-				%tr
-					%td.col-3 US$- 23.24 
-					%td.col-5 Test Description 10
-					%td.col-4 2022-01-30 05:29:55 UTC
+	- if @my_ledger[:data].present?
+		.total-entries
+			= "Total Entries: #{@my_ledger[:data].count}"
+		.content
+			%table.table.table-striped
+				%thead
+					%tr
+						%td.col-3 Amount
+						%td.col-5 Description
+						%td.col-4 Datetime
+				%tbody
+					- @my_ledger[:data].each do |data|
+						%tr
+							%td.col-3
+								= data[:amount]
+							%td.col-5 
+								= data[:description]
+							%td.col-4 
+								= data[:datetime]
+	- else
+		.error
+			= @my_ledger[:error] || 'Unable to fetch data from API'
+				
 				

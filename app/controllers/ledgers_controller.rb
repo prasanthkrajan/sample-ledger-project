@@ -6,5 +6,6 @@ class LedgersController < ApplicationController
 	private 
 
 	def data_from_api
+		LedgerDataPresenter.new(API_ENDPOINT).formatted_data
 	end
 end

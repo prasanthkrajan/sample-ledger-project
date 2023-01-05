@@ -182,5 +182,19 @@ RSpec.describe LedgerApiDataPresenter do
         expect(subject).to eql(expected_data_format)
       end
     end
+
+    context 'when interacting with a invalid API endpoint', vcr: 'presenters/ledger_api_data/formatted_data/not_ok' do
+      let(:api_endpoint) { 'https://take-home-test-api.herokuapp.com/bogative' }
+      let(:expected_data_format) do
+        {
+          data: [],
+          error: 'Unable to fetch data due to error 404'
+        }
+      end
+
+      it 'returns empty API data and error message' do
+        expect(subject).to eql(expected_data_format)
+      end
+    end
   end
 end

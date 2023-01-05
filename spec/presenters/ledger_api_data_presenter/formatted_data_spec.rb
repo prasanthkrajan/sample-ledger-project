@@ -5,66 +5,67 @@ RSpec.describe LedgerApiDataPresenter do
 
   describe '#formatted_data' do
     subject { presenter.formatted_data }
+    let(:api_endpoint) { }
+    let(:valid_data_format) do
+      {
+        data: [
+          { 
+            :amount => "USD$ 23.24", 
+            :datetime => "2022-01-31 05:29:55 -0400", 
+            :description => "Gas bill"
+          }, 
+          { 
+            :amount => "JPY$ 4637", 
+            :datetime => "2022-01-31 14:29:55 +0900", 
+            :description => "ﾔﾏﾀﾞｶｲｼｬ"
+          }, 
+          { 
+            :amount => "USD$ -54.18", 
+            :datetime => "2022-01-31 05:29:55 -0400", 
+            :description => "REF: #121353abf091285ff727a2649e58ddbae2900918376562abeed49276f"
+          }, 
+          {
+            :amount => "USD$ -51.51", 
+            :datetime => "2022-01-31 05:29:55 -0500", 
+            :description => nil
+          }, 
+          {
+            :amount => "USD$ 27.7", 
+            :datetime => "2022-01-31 05:29:55 -0600", 
+            :description => "U+1F32D"
+          }, 
+          { 
+            :amount => "JPY$ 5354", 
+            :datetime => "2022-01-31 05:29:55 +0900", 
+            :description => "https://docbase.ioからのインボイス"
+          }, 
+          {
+            :amount => "USD$ 74.6", 
+            :datetime => "2022-01-31 05:29:55 -0400", 
+            :description => "Fuel for trip to Steam Offices"
+          }, 
+          {
+            :amount => "USD$ -66.93", 
+            :datetime => "2022-01-31 05:29:55 -0400", 
+            :description => "Refund"
+          }, 
+          {
+            :amount => "JPY$ -892", 
+            :datetime => "2022-01-31 05:29:55 +0900", 
+            :description => "払い戻し"
+          }, 
+          {
+            :amount => "KRW$ 29182", 
+            :datetime => "2022-01-31 05:29:55 +0900", 
+            :description => "전기세"
+          }
+        ],
+        error: nil
+      }
+    end
 
     context 'when API endpoint is valid and data is retrievable' do
-      let(:api_endpoint) { }
-      let(:expected_data_format) do
-        {
-          data: [
-            { 
-              :amount => "USD$ 23.24", 
-              :datetime => "2022-01-31 05:29:55 -0400", 
-              :description => "Gas bill"
-            }, 
-            { 
-              :amount => "JPY$ 4637", 
-              :datetime => "2022-01-31 14:29:55 +0900", 
-              :description => "ﾔﾏﾀﾞｶｲｼｬ"
-            }, 
-            { 
-              :amount => "USD$ -54.18", 
-              :datetime => "2022-01-31 05:29:55 -0400", 
-              :description => "REF: #121353abf091285ff727a2649e58ddbae2900918376562abeed49276f"
-            }, 
-            {
-              :amount => "USD$ -51.51", 
-              :datetime => "2022-01-31 05:29:55 -0500", 
-              :description => nil
-            }, 
-            {
-              :amount => "USD$ 27.7", 
-              :datetime => "2022-01-31 05:29:55 -0600", 
-              :description => "U+1F32D"
-            }, 
-            { 
-              :amount => "JPY$ 5354", 
-              :datetime => "2022-01-31 05:29:55 +0900", 
-              :description => "https://docbase.ioからのインボイス"
-            }, 
-            {
-              :amount => "USD$ 74.6", 
-              :datetime => "2022-01-31 05:29:55 -0400", 
-              :description => "Fuel for trip to Steam Offices"
-            }, 
-            {
-              :amount => "USD$ -66.93", 
-              :datetime => "2022-01-31 05:29:55 -0400", 
-              :description => "Refund"
-            }, 
-            {
-              :amount => "JPY$ -892", 
-              :datetime => "2022-01-31 05:29:55 +0900", 
-              :description => "払い戻し"
-            }, 
-            {
-              :amount => "KRW$ 29182", 
-              :datetime => "2022-01-31 05:29:55 +0900", 
-              :description => "전기세"
-            }
-          ],
-          error: nil
-        }
-      end
+      let(:expected_data_format) { valid_data_format }
 
       let(:mock_api_data) do
         {
@@ -152,7 +153,6 @@ RSpec.describe LedgerApiDataPresenter do
     end
 
     context 'when API endpoint is down or invalid' do
-      let(:api_endpoint) { }
       let(:mock_api_data) do
         {
           error: 'API endpoint unavailable'
@@ -168,6 +168,15 @@ RSpec.describe LedgerApiDataPresenter do
       before do
         allow_any_instance_of(described_class).to receive(:api_data).and_return(mock_api_data)
       end
+
+      it 'returns API data in expected format' do
+        expect(subject).to eql(expected_data_format)
+      end
+    end
+
+    context 'when interacting with a real valid API endpoint', vcr: 'presenters/ledger_api_data/formatted_data/ok' do
+      let(:api_endpoint) { 'https://take-home-test-api.herokuapp.com/invoices' }
+      let(:expected_data_format) { valid_data_format }
 
       it 'returns API data in expected format' do
         expect(subject).to eql(expected_data_format)

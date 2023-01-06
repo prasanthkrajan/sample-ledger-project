@@ -9,7 +9,7 @@ class LedgerApiDataPresenter
 		{
 			data: formatted_ledger_data,
 			error: formatted_error,
-			total_amount: 'USD 100'
+			total_amount: LedgerDataCalculator.new(api_data).total_amount
 		}
 	end
 

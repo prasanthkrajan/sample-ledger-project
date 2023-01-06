@@ -4,10 +4,10 @@ RSpec.describe LedgersController, type: :controller do
   render_views
 
   describe "GET index" do
-    subject(:response) { get :index }
+    subject(:response) { get :my_ledger }
 
-    it "renders the index template", vcr: 'controllers/ledgers/index/render_template_ok' do
-      expect(subject).to render_template(:index)
+    it "renders the index template", vcr: 'controllers/ledgers/my_ledger/render_template_ok' do
+      expect(subject).to render_template(:my_ledger)
     end
 
     context 'when data is retrieved successfully from API', vcr: 'controllers/ledgers/index/ok' do

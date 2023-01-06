@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Thu, 05 Jan 2023 19:19:23 GMT
+      - Fri, 06 Jan 2023 08:06:32 GMT
       Connection:
       - keep-alive
       X-Cascade:
@@ -43,5 +43,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "<h1>Not Found</h1>"
-  recorded_at: Thu, 05 Jan 2023 19:19:24 GMT
+  recorded_at: Fri, 06 Jan 2023 08:06:32 GMT
 recorded_with: VCR 6.1.0

@@ -15,7 +15,7 @@ class LedgerApiDataPresenter
 	private
 
 	def api_data
-		ApiDataRetriever.call(api_endpoint)
+		@api_data ||= ApiDataRetriever.call(api_endpoint)
 	end
 
 	def formatted_ledger_data

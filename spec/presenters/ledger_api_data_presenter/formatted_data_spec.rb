@@ -183,7 +183,7 @@ RSpec.describe LedgerApiDataPresenter do
       end
     end
 
-    context 'when interacting with a invalid API endpoint', vcr: 'presenters/ledger_api_data/formatted_data/not_ok' do
+    context 'when interacting with an invalid API endpoint', vcr: 'presenters/ledger_api_data/formatted_data/not_ok' do
       let(:api_endpoint) { 'https://take-home-test-api.herokuapp.com/bogative' }
       let(:expected_data_format) do
         {

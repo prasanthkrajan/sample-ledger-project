@@ -60,7 +60,8 @@ RSpec.describe LedgerApiDataPresenter do
             :description => "전기세"
           }
         ],
-        error: nil
+        error: nil,
+        total_amount: 'USD 100'
       }
     end
 
@@ -148,6 +149,7 @@ RSpec.describe LedgerApiDataPresenter do
       end
 
       it 'returns API data in expected format' do
+        expect(subject.keys).to match_array([:data, :error, :total_amount])
         expect(subject).to eql(expected_data_format)
       end
     end
@@ -161,7 +163,8 @@ RSpec.describe LedgerApiDataPresenter do
       let(:expected_data_format) do
         {
           data: [],
-          error: 'API endpoint unavailable'
+          error: 'API endpoint unavailable',
+          total_amount: 'USD 100'
         }
       end
 
@@ -170,6 +173,7 @@ RSpec.describe LedgerApiDataPresenter do
       end
 
       it 'returns API data in expected format' do
+        expect(subject.keys).to match_array([:data, :error, :total_amount])
         expect(subject).to eql(expected_data_format)
       end
     end
@@ -179,6 +183,7 @@ RSpec.describe LedgerApiDataPresenter do
       let(:expected_data_format) { valid_data_format }
 
       it 'returns API data in expected format' do
+        expect(subject.keys).to match_array([:data, :error, :total_amount])
         expect(subject).to eql(expected_data_format)
       end
     end
@@ -188,11 +193,13 @@ RSpec.describe LedgerApiDataPresenter do
       let(:expected_data_format) do
         {
           data: [],
-          error: 'Unable to fetch data due to error 404'
+          error: 'Unable to fetch data due to error 404',
+          total_amount: 'USD 100'
         }
       end
 
       it 'returns empty API data and error message' do
+        expect(subject.keys).to match_array([:data, :error, :total_amount])
         expect(subject).to eql(expected_data_format)
       end
     end

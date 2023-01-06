@@ -21,7 +21,7 @@
 							%td.col-4 
 								= data[:datetime]
 		.total-amount.fixed-bottom
-			= "Total Amount: USD 100"
+			= "Total Amount: #{@my_ledger[:total_amount]}"
 	- else
 		.error
 			= @my_ledger[:error] || 'Unable to fetch data from API'

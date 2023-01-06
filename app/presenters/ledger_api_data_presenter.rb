@@ -8,7 +8,8 @@ class LedgerApiDataPresenter
 	def formatted_data
 		{
 			data: formatted_ledger_data,
-			error: formatted_error
+			error: formatted_error,
+			total_amount: 'USD 100'
 		}
 	end
 

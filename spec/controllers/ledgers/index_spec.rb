@@ -31,15 +31,15 @@ RSpec.describe LedgersController, type: :controller do
         expect(response.body).not_to include('Total Entries')
         expect(response.body).not_to include('table')
       end
+    end
 
-      context 'when error key is not present' do
-        before do
-          allow_any_instance_of(LedgerApiDataPresenter).to receive(:formatted_data).and_return({data: []})
-        end
+    context 'when error key is not present' do
+      before do
+        allow_any_instance_of(LedgerApiDataPresenter).to receive(:formatted_data).and_return({ data: [] })
+      end
 
-        it 'displays default error message' do
-          expect(response.body).to include('Unable to fetch data from API')
-        end
+      it 'displays default error message' do
+        expect(response.body).to include('Unable to fetch data from API')
       end
     end
   end

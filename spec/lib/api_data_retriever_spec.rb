@@ -96,5 +96,19 @@ RSpec.describe ApiDataRetriever do
         expect(subject).to eql({ error: 'Unable to fetch data due to error 404' })
       end
     end
+
+    context 'when endpoint returns data that cannot be parsed' do
+      let(:api_endpoint) { 'some-non-json-api-endpoint' }
+
+      before do
+        response = double(body: 'bogative')
+        allow(Net::HTTP).to receive(:get_response).with(anything).and_return(response)
+        allow(response).to receive(:is_a?).with(Net::HTTPSuccess).and_return(true)
+      end
+
+      it 'returns empty array as data' do
+        expect(subject).to eql({ data: [] })
+      end
+    end
   end
 end

@@ -2,6 +2,15 @@ class ApiDataRetriever
 	def self.call(endpoint)
 		uri = URI(endpoint)
 		response = Net::HTTP.get_response(uri)
-		response.is_a?(Net::HTTPSuccess) ? { data: JSON.parse(response.body) } : { error: "Unable to fetch data due to error #{response.code}"}
+		if response.is_a?(Net::HTTPSuccess)
+			parsed_data = begin
+			  JSON.parse(response.body)
+			rescue JSON::ParserError
+			  []
+			end
+			{ data: parsed_data }
+		else
+			{ error: "Unable to fetch data due to error #{response.code}"}
+		end
 	end
 end

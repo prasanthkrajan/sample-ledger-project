@@ -19,7 +19,7 @@ class LedgerApiDataPresenter
 	end
 
 	def formatted_ledger_data
-		return [] unless api_data[:data].present?
+		return [] unless api_data && api_data[:data].present?
 
 		arr = []
 		api_data[:data].each do |data|

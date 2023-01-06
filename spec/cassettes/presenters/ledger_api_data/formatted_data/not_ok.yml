@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Thu, 05 Jan 2023 19:37:42 GMT
+      - Fri, 06 Jan 2023 07:33:55 GMT
       Connection:
       - keep-alive
       X-Cascade:
@@ -43,7 +43,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "<h1>Not Found</h1>"
-  recorded_at: Thu, 05 Jan 2023 19:37:43 GMT
+  recorded_at: Fri, 06 Jan 2023 07:33:55 GMT
 - request:
     method: get
     uri: https://take-home-test-api.herokuapp.com/bogative
@@ -67,7 +67,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Thu, 05 Jan 2023 19:37:44 GMT
+      - Fri, 06 Jan 2023 07:33:56 GMT
       Connection:
       - keep-alive
       X-Cascade:
@@ -87,7 +87,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "<h1>Not Found</h1>"
-  recorded_at: Thu, 05 Jan 2023 19:37:44 GMT
+  recorded_at: Fri, 06 Jan 2023 07:33:57 GMT
 - request:
     method: get
     uri: https://take-home-test-api.herokuapp.com/bogative
@@ -111,7 +111,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Thu, 05 Jan 2023 19:37:44 GMT
+      - Fri, 06 Jan 2023 07:33:57 GMT
       Connection:
       - keep-alive
       X-Cascade:
@@ -131,5 +131,49 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "<h1>Not Found</h1>"
-  recorded_at: Thu, 05 Jan 2023 19:37:45 GMT
+  recorded_at: Fri, 06 Jan 2023 07:33:58 GMT
+- request:
+    method: get
+    uri: https://take-home-test-api.herokuapp.com/bogative
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - take-home-test-api.herokuapp.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Fri, 06 Jan 2023 07:33:58 GMT
+      Connection:
+      - keep-alive
+      X-Cascade:
+      - pass
+      Content-Type:
+      - text/html;charset=utf-8
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '18'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: "<h1>Not Found</h1>"
+  recorded_at: Fri, 06 Jan 2023 07:33:59 GMT
 recorded_with: VCR 6.1.0

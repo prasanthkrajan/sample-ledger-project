@@ -19,8 +19,11 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 # Use HAML for views
-gem "haml-rails", "~> 2.0"
-gem "html2haml"
+gem 'haml-rails', "~> 2.0"
+gem 'html2haml'
+
+# Currency conversion
+gem 'eu_central_bank'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

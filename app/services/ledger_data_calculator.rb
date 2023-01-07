@@ -1,4 +1,5 @@
 class LedgerDataCalculator
+	USD_CURRENCY = 'USD'
 	attr_accessor :data
 
 	def initialize(ledger_data)
@@ -8,15 +9,28 @@ class LedgerDataCalculator
 	def total_amount
 		return 'USD 0' unless data.present?
 
-		arr = []
+		total_amount = 0
 		data.each do |d|
-			arr << if d['is_credit']
-				-(d['amount'])
-			else
-				d['amount']
-			end
+			total_amount += converted_amount(d)
 		end
 		
-		"USD #{arr.sum}"
+		"USD #{total_amount}"
+	end
+
+	private
+
+	def converted_amount(data)
+		amount = if data['is_credit']
+			-(data['amount'])
+		else
+			data['amount']
+		end
+
+		return amount if data['currency'] == USD_CURRENCY
+
+		bank = EuCentralBank.new
+		bank.update_rates
+		Money.default_bank = bank
+		Money.new(1, data['currency']).exchange_to(USD_CURRENCY).fractional
 	end
 end

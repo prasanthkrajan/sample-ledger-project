@@ -8,6 +8,7 @@ class LedgersController < ApplicationController
 	end
 
 	def export
+		@csv_data = params[:csv_data]
 		respond_to do |format|
 			format.csv do
 		    response.headers['Content-Type'] = 'text/csv'

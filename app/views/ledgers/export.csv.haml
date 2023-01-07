@@ -1,0 +1,4 @@
+- headers = ['Amount', 'Description', 'Datetime']
+= CSV.generate_line(headers)
+- @csv_data.each do |data| 
+  = CSV.generate_line([data['amount'], data['description'], data['datetime']])

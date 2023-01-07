@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe LedgersController, type: :controller do
   render_views
 
-  describe "GET index" do
+  describe "GET my_ledger" do
     subject(:response) { get :my_ledger }
 
-    it "renders the index template", vcr: 'controllers/ledgers/my_ledger/render_template_ok' do
+    it "renders the my_ledger template", vcr: 'controllers/ledgers/my_ledger/render_template_ok' do
       expect(subject).to render_template(:my_ledger)
     end
 
-    context 'when data is retrieved successfully from API', vcr: 'controllers/ledgers/index/ok' do
+    context 'when data is retrieved successfully from API', vcr: 'controllers/ledgers/my_ledger/ok' do
       let(:expected_total_entries_count) { 10 }
 
       it 'displays the data correctly' do
@@ -26,7 +26,7 @@ RSpec.describe LedgersController, type: :controller do
 
       let(:error_from_api) { 'Unable to fetch data due to error 404'}
 
-      it 'displays the data correctly', vcr: 'controllers/ledgers/index/not_ok' do
+      it 'displays the data correctly', vcr: 'controllers/ledgers/my_ledger/not_ok' do
         expect(response.body).to include(error_from_api)
         expect(response.body).not_to include('Total Entries')
         expect(response.body).not_to include('table')

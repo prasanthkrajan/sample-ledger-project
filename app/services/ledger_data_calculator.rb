@@ -11,26 +11,32 @@ class LedgerDataCalculator
 
 		total_amount = 0
 		data.each do |d|
-			total_amount += converted_amount(d)
+			total_amount += formatted_amount(d)
 		end
 		
-		"USD #{total_amount}"
+		"USD #{'%.2f' % total_amount}"
 	end
 
 	private
 
-	def converted_amount(data)
-		amount = if data['is_credit']
-			-(data['amount'])
-		else
-			data['amount']
-		end
+	def formatted_amount(data)
+		amount = data['amount'].to_f
+		amount = -(amount) if data['is_credit']
 
 		return amount if data['currency'] == USD_CURRENCY
+		convert_amount(amount, data['currency'])
+	end
+
+	def convert_amount(amount, currency)
+		return 0 unless currency.present?
 
 		bank = EuCentralBank.new
 		bank.update_rates
 		Money.default_bank = bank
-		Money.new(1, data['currency']).exchange_to(USD_CURRENCY).fractional
+		begin
+			Money.new(amount, currency).exchange_to(USD_CURRENCY).fractional
+		rescue
+			0
+		end
 	end
 end

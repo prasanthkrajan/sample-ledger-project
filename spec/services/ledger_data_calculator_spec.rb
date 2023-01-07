@@ -30,7 +30,7 @@ RSpec.describe LedgerDataCalculator do
 			end
 		end
 
-		context 'when data has a valid list of amount and belong to same curreny' do
+		context 'when data has a valid list of amount and belong to same currency' do
 			let(:data) do
 				{
 					data: [
@@ -107,7 +107,175 @@ RSpec.describe LedgerDataCalculator do
 			end
 
 			it 'returns the correct total amount' do
-				expect(subject).to eql('USD 129.93')
+				expect(subject).to eql('USD 5865.93')
+			end
+		end
+
+		context 'when data has invalid currencies', vcr: 'services/ledger_data_calculator/total_amount/convert_invalid_currency' do
+			let(:data) do
+				{
+					data: [
+						{
+              "amount" => 23.24,
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "Gas bill",
+              "created_at" => "2022-01-31 05:29:55 -0400"
+            },
+            {
+              "amount" => 50,
+              "currency" => "ABC",
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            },
+            {
+              "amount" => 10,
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            }
+		      ]
+				}
+			end
+
+			it 'coerces invalid currency to 0 and performs the math' do
+				expect(subject).to eql('USD 33.24')
+			end
+		end
+
+		context 'when data has null values as amount', vcr: 'services/ledger_data_calculator/total_amount/handle_null_amount' do
+			let(:data) do
+				{
+					data: [
+						{
+              "amount" => 23.24,
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "Gas bill",
+              "created_at" => "2022-01-31 05:29:55 -0400"
+            },
+            {
+              "amount" => 50,
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            },
+            {
+              "amount" => nil,
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            }
+		      ]
+				}
+			end
+
+			it 'coerces null amount to 0 and performs the math' do
+				expect(subject).to eql('USD 73.24')
+			end
+		end
+
+		context 'when data has string values as amount', vcr: 'services/ledger_data_calculator/total_amount/handle_string_values' do
+			let(:data) do
+				{
+					data: [
+						{
+              "amount" => 23.24,
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "Gas bill",
+              "created_at" => "2022-01-31 05:29:55 -0400"
+            },
+            {
+              "amount" => '50',
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            },
+            {
+              "amount" => 'random-amount',
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            }
+		      ]
+				}
+			end
+
+			it 'converts string value to integer and performs the math' do
+				expect(subject).to eql('USD 73.24')
+			end
+		end
+
+		context 'when data has string long decimal number as amount', vcr: 'services/ledger_data_calculator/total_amount/handle_long_decimal_number' do
+			let(:data) do
+				{
+					data: [
+						{
+              "amount" => 23.2403939494,
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "Gas bill",
+              "created_at" => "2022-01-31 05:29:55 -0400"
+            },
+            {
+              "amount" => 50,
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            },
+            {
+              "amount" => '5.303049492',
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            }
+		      ]
+				}
+			end
+
+			it 'performs the math and rounds off the amount to 2 decimal place' do
+				expect(subject).to eql('USD 78.54')
+			end
+		end
+
+		context 'when data has missing keys', vcr: 'services/ledger_data_calculator/total_amount/handle_missing_keys' do
+			let(:data) do
+				{
+					data: [
+						{
+              "amount" => 23.50,
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "Gas bill",
+              "created_at" => "2022-01-31 05:29:55 -0400"
+            },
+            {
+              "currency" => "USD",
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            },
+            {
+              "amount" => 15.30,
+              "is_credit" => false,
+              "description" => "ﾔﾏﾀﾞｶｲｼｬ",
+              "created_at" => "2022-01-31 14:29:55 +0900"
+            }
+		      ]
+				}
+			end
+
+			it 'ignores data without amount or currency and performs the math' do
+				expect(subject).to eql('USD 23.50')
 			end
 		end
 	end

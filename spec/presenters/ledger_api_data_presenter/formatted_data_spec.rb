@@ -61,11 +61,11 @@ RSpec.describe LedgerApiDataPresenter do
           }
         ],
         error: nil,
-        total_amount: 'USD 100'
+        total_amount: 'USD 9005.92'
       }
     end
 
-    context 'when API endpoint is valid and data is retrievable' do
+    context 'when API endpoint is valid and data is retrievable', vcr: 'presenters/ledger_api_data/formatted_data/converts_mock_data_ok' do
       let(:expected_data_format) { valid_data_format }
 
       let(:mock_api_data) do
@@ -164,7 +164,7 @@ RSpec.describe LedgerApiDataPresenter do
         {
           data: [],
           error: 'API endpoint unavailable',
-          total_amount: 'USD 100'
+          total_amount: 'USD 0'
         }
       end
 
@@ -194,7 +194,7 @@ RSpec.describe LedgerApiDataPresenter do
         {
           data: [],
           error: 'Unable to fetch data due to error 404',
-          total_amount: 'USD 100'
+          total_amount: 'USD 0'
         }
       end
 

@@ -9,11 +9,12 @@ RSpec.describe LedgersController, type: :routing do
     expect(get('/my_ledger')).to route_to('ledgers#my_ledger')
   end
 
-  it 'routes to export when hit /export' do
-    expect(get('/export')).to route_to('ledgers#export')
+  it 'routes to export when post to /export' do
+    expect(post('/export')).to route_to('ledgers#export')
   end
 
   it 'does not support other generic routes' do
+    expect(get('/export')).not_to be_routable
     expect(get('/ledgers')).not_to be_routable
     expect(get('/ledgers/new')).not_to be_routable
     expect(get('/ledgers/1')).not_to be_routable

@@ -4,4 +4,7 @@ class LedgersController < ApplicationController
 	def my_ledger
 		@my_ledger ||= LedgerApiDataPresenter.new(API_ENDPOINT).formatted_data
 	end
+
+	def export
+	end
 end

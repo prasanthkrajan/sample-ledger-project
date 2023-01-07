@@ -22,6 +22,8 @@
 								= data[:datetime]
 		.total-amount.fixed-bottom
 			= "Total Amount: #{@my_ledger[:total_amount]}"
+			%br
+			= link_to 'Export to CSV', '#', class: "btn btn-primary"
 	- else
 		.error
 			= @my_ledger[:error] || 'Unable to fetch data from API'

@@ -12,7 +12,7 @@ class LedgersController < ApplicationController
 		respond_to do |format|
 			format.csv do
 		    response.headers['Content-Type'] = 'text/csv'
-		    response.headers['Content-Disposition'] = 'attachment; filename=ledger.csv'    
+		    response.headers['Content-Disposition'] = "attachment; filename=#{params[:csv_filename]}.csv"    
 		    render :template => "ledgers/export.csv.haml"
 			end
 		end

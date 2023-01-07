@@ -23,7 +23,7 @@
 		.total-amount.fixed-bottom
 			= "Total Amount: #{@my_ledger[:total_amount]}"
 			%br
-			= button_to 'Export to CSV', export_path(csv_data: @my_ledger[:data]), class: "btn btn-primary"
+			= button_to 'Export to CSV', export_path(csv_data: @my_ledger[:data], format: 'csv'), class: "btn btn-primary"
 	- else
 		.error
 			= @my_ledger[:error] || 'Unable to fetch data from API'

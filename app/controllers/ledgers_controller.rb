@@ -1,3 +1,5 @@
+require 'csv'
+
 class LedgersController < ApplicationController
 	API_ENDPOINT = 'https://take-home-test-api.herokuapp.com/invoices'
 
@@ -6,5 +8,12 @@ class LedgersController < ApplicationController
 	end
 
 	def export
+		respond_to do |format|
+			format.csv do
+		    response.headers['Content-Type'] = 'text/csv'
+		    response.headers['Content-Disposition'] = 'attachment; filename=ledger.csv'    
+		    render :template => "ledgers/export.csv.haml"
+			end
+		end
 	end
 end

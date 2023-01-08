@@ -64,41 +64,6 @@ RSpec.describe LedgerDataCalculator do
 			end
 		end
 
-		context 'when data has a valid list of amount, and different currency is preferred', vcr: 'services/ledger_data_calculator/total_amount/preferred_currency_ok' do
-			let(:calculator) { described_class.new(data, 'JPY') }
-			let(:data) do
-				{
-					data: [
-						{
-		          "amount" => 23.24,
-		          "currency" => "USD",
-		          "is_credit" => false,
-		          "description" => "Entry 1",
-		          "created_at" => "2022-01-31 05:29:55 -0400"
-		        },
-		      	{
-		          "amount" => 50.60,
-		          "currency" => "USD",
-		          "is_credit" => false,
-		          "description" => "Entry 2",
-		          "created_at" => "2022-01-31 05:29:55 -0400"
-		        },
-		        {
-		          "amount" => 10.20,
-		          "currency" => "USD",
-		          "is_credit" => true,
-		          "description" => "Entry 2",
-		          "created_at" => "2022-01-31 05:29:55 -0400"
-		        }
-		      ]
-				}
-			end
-
-			it 'returns the correct total amount' do
-				expect(subject).to eql('JPY 87.00')
-			end
-		end
-
 		context 'when data has a valid list of amount and belong different currencies', vcr: 'services/ledger_data_calculator/total_amount/convert_ok' do
 			let(:data) do
 				{
@@ -311,6 +276,68 @@ RSpec.describe LedgerDataCalculator do
 
 			it 'ignores data without amount or currency and performs the math' do
 				expect(subject).to eql('USD 23.50')
+			end
+		end
+
+		context 'when different currency is preferred' do
+			let(:calculator) { described_class.new(data, 'JPY') }
+
+			context 'and data has a valid list of amount', vcr: 'services/ledger_data_calculator/total_amount/preferred_currency_valid_data_ok' do
+				let(:data) do
+					{
+						data: [
+							{
+			          "amount" => 23.24,
+			          "currency" => "USD",
+			          "is_credit" => false,
+			          "description" => "Entry 1",
+			          "created_at" => "2022-01-31 05:29:55 -0400"
+			        },
+			      	{
+			          "amount" => 50.60,
+			          "currency" => "USD",
+			          "is_credit" => false,
+			          "description" => "Entry 2",
+			          "created_at" => "2022-01-31 05:29:55 -0400"
+			        },
+			        {
+			          "amount" => 10.20,
+			          "currency" => "USD",
+			          "is_credit" => true,
+			          "description" => "Entry 2",
+			          "created_at" => "2022-01-31 05:29:55 -0400"
+			        }
+			      ]
+					}
+				end
+
+				it 'returns the correct total amount' do
+					expect(subject).to eql('JPY 87.00')
+				end
+			end
+
+			context 'and ledger data is null' do
+				let(:data) { }
+
+				it 'returns 0' do
+					expect(subject).to eql('JPY 0')
+				end
+			end
+
+			context 'and ledger data key is empty' do
+				let(:data) { { data: [] } }
+
+				it 'returns 0' do
+					expect(subject).to eql('JPY 0')
+				end
+			end
+
+			context 'and ledger data key is null' do
+				let(:data) { { data: nil } }
+
+				it 'returns 0' do
+					expect(subject).to eql('JPY 0')
+				end
 			end
 		end
 	end

@@ -7,7 +7,7 @@ class LedgerDataCalculator
 	end
 
 	def total_amount
-		return 'USD 0' unless data.present?
+		return default_amount unless data.present?
 
 		total_amount = 0
 		data.each do |d|
@@ -38,5 +38,9 @@ class LedgerDataCalculator
 		rescue
 			0
 		end
+	end
+
+	def default_amount
+		"#{preferred_currency} 0"
 	end
 end

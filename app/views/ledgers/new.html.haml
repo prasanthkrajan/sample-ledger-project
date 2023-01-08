@@ -1,0 +1,15 @@
+.container
+	.heading
+		Create New Ledger
+	.content
+		= link_to 'Add More Entry', '#', id: 'addEntry', class: 'btn'
+		= simple_form_for @ledger do |f|
+			= f.input :title
+			= f.simple_fields_for :ledger_entries do |ff|
+				#fieldsetContainer
+					%fieldset.fieldset
+						= ff.input :currency
+						= ff.input :amount
+						= ff.input :description
+			= f.button :submit
+

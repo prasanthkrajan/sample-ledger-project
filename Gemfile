@@ -25,6 +25,9 @@ gem 'html2haml'
 # Currency conversion
 gem 'eu_central_bank'
 
+# Form management
+gem 'simple_form'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

@@ -23,6 +23,11 @@ class LedgersController < ApplicationController
 		@ledgers ||= Ledger.all
 	end
 
+	def new
+		@ledger = Ledger.new
+		@ledger.ledger_entries.build
+	end
+
 	private
 
 	def csv_data

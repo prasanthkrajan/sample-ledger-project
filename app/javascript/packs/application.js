@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("src/addEntry")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,6 +21,7 @@ require("channels")
 require("@popperjs/core")
 
 import "bootstrap"
+import { addEntry } from 'addEntry'
 
 // Import the specific modules you may need (Modal, Alert, etc)
 import { Tooltip, Popover } from "bootstrap"
@@ -39,4 +41,9 @@ document.addEventListener("turbolinks:load", () => {
   var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
       return new Popover(popoverTriggerEl)
   })
+
+  if (document.querySelector('#fieldsetContainer')) {
+    addEntry()
+  }
 })
+

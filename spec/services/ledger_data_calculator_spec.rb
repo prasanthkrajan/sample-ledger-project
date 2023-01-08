@@ -64,6 +64,41 @@ RSpec.describe LedgerDataCalculator do
 			end
 		end
 
+		context 'when data has a valid list of amount, and different currency is preferred', vcr: 'services/ledger_data_calculator/total_amount/preferred_currency_ok' do
+			let(:calculator) { described_class.new(data, 'JPY') }
+			let(:data) do
+				{
+					data: [
+						{
+		          "amount" => 23.24,
+		          "currency" => "USD",
+		          "is_credit" => false,
+		          "description" => "Entry 1",
+		          "created_at" => "2022-01-31 05:29:55 -0400"
+		        },
+		      	{
+		          "amount" => 50.60,
+		          "currency" => "USD",
+		          "is_credit" => false,
+		          "description" => "Entry 2",
+		          "created_at" => "2022-01-31 05:29:55 -0400"
+		        },
+		        {
+		          "amount" => 10.20,
+		          "currency" => "USD",
+		          "is_credit" => true,
+		          "description" => "Entry 2",
+		          "created_at" => "2022-01-31 05:29:55 -0400"
+		        }
+		      ]
+				}
+			end
+
+			it 'returns the correct total amount' do
+				expect(subject).to eql('JPY 87.00')
+			end
+		end
+
 		context 'when data has a valid list of amount and belong different currencies', vcr: 'services/ledger_data_calculator/total_amount/convert_ok' do
 			let(:data) do
 				{
@@ -145,7 +180,7 @@ RSpec.describe LedgerDataCalculator do
 			end
 		end
 
-		context 'when data has null values as amount', vcr: 'services/ledger_data_calculator/total_amount/handle_null_amount' do
+		context 'when data has null values as amount' do
 			let(:data) do
 				{
 					data: [
@@ -179,7 +214,7 @@ RSpec.describe LedgerDataCalculator do
 			end
 		end
 
-		context 'when data has string values as amount', vcr: 'services/ledger_data_calculator/total_amount/handle_string_values' do
+		context 'when data has string values as amount' do
 			let(:data) do
 				{
 					data: [
@@ -213,7 +248,7 @@ RSpec.describe LedgerDataCalculator do
 			end
 		end
 
-		context 'when data has string long decimal number as amount', vcr: 'services/ledger_data_calculator/total_amount/handle_long_decimal_number' do
+		context 'when data has string long decimal number as amount' do
 			let(:data) do
 				{
 					data: [
@@ -247,7 +282,7 @@ RSpec.describe LedgerDataCalculator do
 			end
 		end
 
-		context 'when data has missing keys', vcr: 'services/ledger_data_calculator/total_amount/handle_missing_keys' do
+		context 'when data has missing keys' do
 			let(:data) do
 				{
 					data: [

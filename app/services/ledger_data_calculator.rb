@@ -1,9 +1,9 @@
 class LedgerDataCalculator
-	USD_CURRENCY = 'USD'
-	attr_accessor :data
+	attr_accessor :data, :preferred_currency
 
-	def initialize(ledger_data)
+	def initialize(ledger_data, preferred_currency = 'USD')
 		self.data = ledger_data ? Array(ledger_data[:data]) : []
+		self.preferred_currency = preferred_currency
 	end
 
 	def total_amount
@@ -14,7 +14,7 @@ class LedgerDataCalculator
 			total_amount += formatted_amount(d)
 		end
 		
-		"USD #{'%.2f' % total_amount}"
+		"#{preferred_currency} #{'%.2f' % total_amount}"
 	end
 
 	private
@@ -23,7 +23,7 @@ class LedgerDataCalculator
 		amount = data['amount'].to_f
 		amount = -(amount) if data['is_credit']
 
-		return amount if data['currency'] == USD_CURRENCY
+		return amount if data['currency'] == preferred_currency
 		convert_amount(amount, data['currency'])
 	end
 
@@ -34,7 +34,7 @@ class LedgerDataCalculator
 		bank.update_rates
 		Money.default_bank = bank
 		begin
-			Money.new(amount, currency).exchange_to(USD_CURRENCY).fractional
+			Money.new(amount, currency).exchange_to(preferred_currency).fractional
 		rescue
 			0
 		end

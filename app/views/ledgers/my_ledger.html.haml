@@ -20,7 +20,7 @@
 								= data[:description]
 							%td.col-4 
 								= data[:datetime]
-		.total-amount.fixed-bottom
+		.footer.fixed-bottom
 			= "Total Amount: #{@my_ledger[:total_amount]}"
 			%br
 			= button_to 'Export to CSV', export_path(csv_data: @my_ledger[:data], csv_filename: "My Ledger - #{DateTime.now}", format: 'csv'), class: "btn btn-primary"

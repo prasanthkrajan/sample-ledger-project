@@ -19,6 +19,10 @@ class LedgersController < ApplicationController
     disposition: 'attachment', filename: "#{params[:csv_filename]}.csv"
 	end
 
+	def index
+		@ledgers ||= Ledger.all
+	end
+
 	private
 
 	def csv_data

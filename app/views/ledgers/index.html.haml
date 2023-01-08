@@ -1,0 +1,11 @@
+.container
+	.heading
+		All Ledgers
+	.total-entries
+		= "Total Ledgers: #{@ledgers.count}"
+	.content
+		- @ledgers.each do |ledger|
+			.row
+				= link_to ledger.title, ledger_path(ledger)
+	.footer.fixed-bottom
+		= link_to 'Create New Ledger', new_ledger_path, class: "btn btn-primary"

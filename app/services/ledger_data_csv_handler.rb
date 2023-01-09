@@ -5,7 +5,7 @@ class LedgerDataCsvHandler
 
 	def initialize(csv_data:, csv_filename:)
 		self.csv_data = csv_data
-		self.csv_filename = csv_filename
+		self.csv_filename = csv_filename || 'Exported_Ledger'
 	end
 
 	def generate_csv_data

@@ -28,6 +28,13 @@ class LedgersController < ApplicationController
 		@ledger.ledger_entries.build
 	end
 
+	def create
+		puts 'ledger params'
+		puts ledger_params.inspect
+		Ledger.create(ledger_params);   
+    redirect_to ledgers_path
+	end
+
 	private
 
 	def csv_data
@@ -35,4 +42,8 @@ class LedgersController < ApplicationController
 
 		Array(params[:csv_data])
 	end
+
+	def ledger_params
+    params.require(:ledger).permit(:title, ledger_entries_attributes: [:amount, :currency, :description])
+  end
 end

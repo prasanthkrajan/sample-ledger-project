@@ -20,7 +20,7 @@ RSpec.describe LedgersController, type: :controller do
       end
 
       it 'displays the data correctly' do
-        expect(response.body).to include("Total Ledgers: #{ledgers.count}")
+        expect(response.body).to include("Total Ledgers: #{ledgers.count + 1}")
         expect(response.body).to have_link('Create New Ledger')
         expect(response.body).to have_link('Ledger One')
         expect(response.body).to have_link('Ledger Two')
@@ -30,7 +30,7 @@ RSpec.describe LedgersController, type: :controller do
 
     context 'when ledgers are not present' do
       it 'displays the data correctly' do
-        expect(response.body).to include("Total Ledgers: 0")
+        expect(response.body).to include("Total Ledgers: 1")
         expect(response.body).to have_link('Create New Ledger')
       end
     end

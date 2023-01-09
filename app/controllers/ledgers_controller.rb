@@ -1,5 +1,3 @@
-require 'csv'
-
 class LedgersController < ApplicationController
 	API_ENDPOINT = ENV['API_ENDPOINT']
 
@@ -8,15 +6,13 @@ class LedgersController < ApplicationController
 	end
 
 	def export
-		csv_string = CSV.generate do |csv|
-			csv << ['Amount', 'Description', 'Datetime']
-      csv_data.each do |t|
-     		csv << [t['amount'], t['description'], t['datetime']]
-      end             
-    end           
-    send_data csv_string,
-    type: 'text/csv; charset=iso-8859-1; header=present',
-    disposition: 'attachment', filename: "#{params[:csv_filename]}.csv"
+		csv_data = LedgerDataCsvHandler.new(csv_data: params[:csv_data], csv_filename: params[:csv_filename]).generate_csv_data
+		send_data(
+			csv_data[:data], 
+			type: csv_data[:type], 
+			disposition: csv_data[:disposition], 
+			filename: csv_data[:filename]
+		)
 	end
 
 	def index
@@ -49,14 +45,8 @@ class LedgersController < ApplicationController
 
 	private
 
-	def csv_data
-		return [] if params[:csv_data].is_a?(String)
-
-		Array(params[:csv_data])
-	end
-
 	def ledger_params
-    params.require(:ledger).permit(:title, ledger_entries_attributes: [:amount, :currency, :description, :is_credit])
+    params.require(:ledger).permit(:title, ledger_entries_attributes: [:amount, :currency, :description])
   end
 
   def resource

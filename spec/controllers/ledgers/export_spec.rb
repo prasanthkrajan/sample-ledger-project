@@ -19,14 +19,18 @@ RSpec.describe LedgersController, type: :controller do
         {
           csv_data: [
             { 
-              'amount' => "USD$ 23.24", 
+              'formatted_amount' => "USD$ 23.24", 
               'datetime' => "2022-01-31 05:29:55 -0400", 
-              'description' => "Gas bill"
+              'description' => "Gas bill",
+              'currency' => 'USD',
+              'amount' => 23.24
             }, 
             { 
-              'amount' => "JPY$ 4637", 
+              'formatted_amount' => "JPY$ 4637", 
               'datetime' => "2022-01-31 14:29:55 +0900", 
-              'description' => "ﾔﾏﾀﾞｶｲｼｬ"
+              'description' => "ﾔﾏﾀﾞｶｲｼｬ",
+              'currency' => 'JPY',
+              'amount' => 4637
             }
           ]
         }
@@ -34,9 +38,9 @@ RSpec.describe LedgersController, type: :controller do
 
       it 'generates CSV successfully' do
         expect(response.parsed_body.lines.count).to eql(3)
-        expect(response.parsed_body.lines[0]).to eql("Amount,Description,Datetime\n")
-        expect(response.parsed_body.lines[1]).to eql("USD$ 23.24,Gas bill,2022-01-31 05:29:55 -0400\n")
-        expect(response.parsed_body.lines[2]).to eql("JPY$ 4637,ﾔﾏﾀﾞｶｲｼｬ,2022-01-31 14:29:55 +0900\n",)
+        expect(response.parsed_body.lines[0]).to eql("Formatted Amount,Currency,Amount,Description,Datetime\n")
+        expect(response.parsed_body.lines[1]).to eql("USD$ 23.24,USD,23.24,Gas bill,2022-01-31 05:29:55 -0400\n")
+        expect(response.parsed_body.lines[2]).to eql("JPY$ 4637,JPY,4637,ﾔﾏﾀﾞｶｲｼｬ,2022-01-31 14:29:55 +0900\n",)
       end
     end
 
@@ -49,7 +53,7 @@ RSpec.describe LedgersController, type: :controller do
 
       it 'generates CSV successfully without any rows, and just headers' do
         expect(response.parsed_body.lines.count).to eql(1)
-        expect(response.parsed_body.lines[0]).to eql("Amount,Description,Datetime\n")
+        expect(response.parsed_body.lines[0]).to eql("Formatted Amount,Currency,Amount,Description,Datetime\n")
       end
     end
 
@@ -62,14 +66,14 @@ RSpec.describe LedgersController, type: :controller do
 
       it 'generates CSV successfully without any rows, and just headers' do
         expect(response.parsed_body.lines.count).to eql(1)
-        expect(response.parsed_body.lines[0]).to eql("Amount,Description,Datetime\n")
+        expect(response.parsed_body.lines[0]).to eql("Formatted Amount,Currency,Amount,Description,Datetime\n")
       end
     end
 
     context 'when post params does not have the csv_data key' do
       it 'generates CSV successfully without any rows, and just headers' do
         expect(response.parsed_body.lines.count).to eql(1)
-        expect(response.parsed_body.lines[0]).to eql("Amount,Description,Datetime\n")
+        expect(response.parsed_body.lines[0]).to eql("Formatted Amount,Currency,Amount,Description,Datetime\n")
       end
     end
   end

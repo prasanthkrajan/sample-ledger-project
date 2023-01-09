@@ -1,0 +1,31 @@
+.container
+	.heading
+		= resource[:title]
+	- if resource[:data].present?
+		.total-entries
+			= "Total Entries: #{resource[:data].count}"
+		.content
+			%table.table.table-striped
+				%thead
+					%tr
+						%td.col-3 Amount
+						%td.col-5 Description
+						%td.col-4 Datetime
+				%tbody
+					- resource[:data].each do |data|
+						%tr
+							%td.col-3
+								= data['formatted_amount']
+							%td.col-5 
+								= data['description']
+							%td.col-4 
+								= data['datetime']
+		.footer.fixed-bottom
+			= "Total Amount: #{resource[:total_amount]}"
+			%br
+			= button_to 'Export to CSV', export_path(csv_data: resource[:data], csv_filename: "#{resource[:title]} - #{DateTime.now}", format: 'csv'), class: "btn btn-primary"
+	- else
+		.error
+			= resource[:error] || 'Unable to fetch data from API'
+				
+				

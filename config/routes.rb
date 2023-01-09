@@ -4,5 +4,4 @@ Rails.application.routes.draw do
   post 'export', to: 'ledgers#export'
 
   resources :ledgers, only: [:new, :create, :index, :show]
-  resources :ledger_entries, only: [:new, :create, :index]
 end

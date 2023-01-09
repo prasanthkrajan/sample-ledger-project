@@ -1,2 +1,0 @@
-class LedgerEntriesController < ApplicationController
-end

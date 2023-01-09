@@ -3,8 +3,6 @@ require 'csv'
 class LedgersController < ApplicationController
 	API_ENDPOINT = 'https://take-home-test-api.herokuapp.com/invoices'
 
-	before_action :prepare_ledger_entries_data, only: [:create]
-
 	def my_ledger
 		@my_ledger ||= LedgerApiDataPresenter.new(API_ENDPOINT).formatted_data
 	end
@@ -50,12 +48,5 @@ class LedgersController < ApplicationController
 
 	def ledger_params
     params.require(:ledger).permit(:title, ledger_entries_attributes: [:amount, :currency, :description, :is_credit])
-  end
-
-  def prepare_ledger_entries_data
-  	params['ledger']['ledger_entries_attributes'].each do |params|
-  		is_credit = params[1]['amount'].to_f.negative? ? true : false
-  		params[1]['is_credit'] = is_credit
-  	end
   end
 end

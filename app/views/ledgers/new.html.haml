@@ -1,21 +1,21 @@
 .header.fixed-top
-	= link_to 'View All Ledgers', ledgers_path
+	= link_to 'View All Ledgers', ledgers_path, class: "btn btn-secondary"
 .container
 	.heading
 		Create New Ledger
 	.content
 		= simple_form_for @ledger do |f|
 			.form-group.ledger-title
-				= f.input :title, label: 'Ledger Title', error: 'Ledger title is mandatory', required: true
+				= f.input :title, label: 'Ledger Title', error: 'Ledger title is mandatory', required: true, placeholder: 'A title that describes the ledger'
 			= f.simple_fields_for :ledger_entries do |ff|
 				#field-set-container
 					%fieldset.fieldset.row.form-group#0
 						.col-sm-4
-							= ff.input :currency
+							= ff.input :currency, placeholder: 'Standard currency code, e.g: USD, JPY'
 						.col-sm-4
-							= ff.input :amount
+							= ff.input :amount, placeholder: 'Amount, and can be in negative for credit'
 						.col-sm-4
-							= ff.input :description
+							= ff.input :description, placeholder: 'Brief info about the entry'
 			= link_to 'Add More Entry', '#', id: 'addEntry', class: 'btn btn-secondary'
 			= f.button :submit, class: 'btn btn-primary'
 

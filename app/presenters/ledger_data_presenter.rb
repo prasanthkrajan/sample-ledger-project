@@ -10,21 +10,23 @@ class LedgerDataPresenter
 		{
 			data: formatted_ledger_data,
 			error: formatted_error,
-			total_amount: LedgerDataCalculator.new(ledger_entries).total_amount
+			total_amount: LedgerDataCalculator.new(formatted_ledger_data).total_amount
 		}
 	end
 
 	private
 
 	def formatted_ledger_data
-		return [] unless resource && ledger_entries.present?
+		return [] unless ledger_entries.present?
 
 		arr = []
 		ledger_entries.each do |data|
 			arr << {
-				amount: format_amount(data),
+				formatted_amount: format_amount(data),
 				description: data.description,
-				datetime: data.created_at
+				datetime: data.created_at.to_s,
+				currency: data.currency,
+				amount: data.amount
 			}
 		end
 		arr

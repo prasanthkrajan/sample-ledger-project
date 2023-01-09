@@ -2,14 +2,19 @@
 	.heading
 		Create New Ledger
 	.content
-		= link_to 'Add More Entry', '#', id: 'addEntry', class: 'btn'
 		= simple_form_for @ledger do |f|
-			= f.input :title
+			.form-group.ledger-title
+				= f.input :title, label: 'Ledger Title', error: 'Ledger title is mandatory', required: true
 			= f.simple_fields_for :ledger_entries do |ff|
-				#fieldsetContainer
-					%fieldset.fieldset
-						= ff.input :currency
-						= ff.input :amount
-						= ff.input :description
-			= f.button :submit
+				#field-set-container
+					%fieldset.fieldset.row.form-group
+						.col-sm-4
+							= ff.input :currency
+						.col-sm-4
+							= ff.input :amount
+						.col-sm-4
+							= ff.input :description
+			= link_to 'Add More Entry', '#', id: 'addEntry', class: 'btn btn-secondary'
+			= f.button :submit, class: 'btn btn-primary'
+
 

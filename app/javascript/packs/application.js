@@ -42,7 +42,7 @@ document.addEventListener("turbolinks:load", () => {
       return new Popover(popoverTriggerEl)
   })
 
-  if (document.querySelector('#fieldsetContainer')) {
+  if (document.querySelector('#field-set-container')) {
     addEntry()
   }
 })

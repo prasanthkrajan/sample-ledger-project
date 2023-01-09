@@ -4,7 +4,7 @@ const addEntry = () => {
 		e.preventDefault();
 		const newFieldset = document.querySelector('.fieldset').outerHTML
 		console.log('newFieldset', newFieldset)
-		document.querySelector('#fieldsetContainer').innerHTML += newFieldset
+		document.querySelector('#field-set-container').innerHTML += newFieldset
 	});
 }
 export { addEntry }

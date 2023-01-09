@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_08_142550) do
+ActiveRecord::Schema.define(version: 2023_01_09_064936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "ledger_entries", force: :cascade do |t|
-    t.float "amount"
-    t.string "currency"
+    t.float "amount", null: false
+    t.string "currency", null: false
     t.boolean "is_credit"
-    t.text "description"
+    t.text "description", null: false
     t.bigint "ledger_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

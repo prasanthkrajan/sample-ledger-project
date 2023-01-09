@@ -16,18 +16,18 @@ RSpec.describe LedgerDataPresenter do
     let(:expected_data) do
       [
         {
-          formatted_amount: "USD$ 100.00", 
-          description: "some-description", 
-          datetime: "2023-01-01 00:00:00 UTC", 
-          currency: "USD", 
-          amount: 100.0
+          'formatted_amount' => "USD$ 100.00", 
+          'description' => "some-description", 
+          'datetime' => "2023-01-01 00:00:00 UTC", 
+          'currency' => "USD", 
+          'amount' => 100.0
         },
         {
-          formatted_amount: "JPY$ 100.00", 
-          description: "some-description", 
-          datetime: "2023-01-01 00:00:00 UTC", 
-          currency: "JPY", 
-          amount: 100.0
+          'formatted_amount' => "JPY$ 100.00", 
+          'description' => "some-description", 
+          'datetime' => "2023-01-01 00:00:00 UTC", 
+          'currency' => "JPY", 
+          'amount' => 100.0
         }
       ]
     end

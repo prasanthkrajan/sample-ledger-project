@@ -22,11 +22,11 @@ class LedgerDataPresenter
 		arr = []
 		ledger_entries.each do |data|
 			arr << {
-				formatted_amount: format_amount(data),
-				description: data.description,
-				datetime: data.created_at.to_s,
-				currency: data.currency,
-				amount: data.amount
+				'formatted_amount' => format_amount(data),
+				'description' => data.description,
+				'datetime' => data.created_at.to_s,
+				'currency' => data.currency,
+				'amount' => data.amount
 			}
 		end
 		arr

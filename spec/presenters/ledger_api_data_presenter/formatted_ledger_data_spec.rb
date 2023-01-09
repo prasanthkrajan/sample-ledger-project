@@ -49,7 +49,15 @@ RSpec.describe LedgerApiDataPresenter do
       end
 
       it 'returns array of valid data' do
-        expect(subject).to eql([{:amount=>"USD$ 23.24", :datetime=>"2022-01-31 05:29:55 -0400", :description=>"Gas bill"}])
+        expect(subject).to eql([
+          {
+            'formatted_amount' => "USD$ 23.24", 
+            'datetime' => "2022-01-31 05:29:55 -0400", 
+            'description' => "Gas bill",
+            'currency' => 'USD',
+            'amount' => 23.24
+          }
+        ])
       end
     end
   end

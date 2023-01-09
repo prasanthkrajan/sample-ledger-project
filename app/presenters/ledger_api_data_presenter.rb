@@ -9,7 +9,7 @@ class LedgerApiDataPresenter
 		{
 			data: formatted_ledger_data,
 			error: formatted_error,
-			total_amount: LedgerDataCalculator.new(api_data).total_amount
+			total_amount: LedgerDataCalculator.new(formatted_ledger_data).total_amount
 		}
 	end
 
@@ -25,9 +25,11 @@ class LedgerApiDataPresenter
 		arr = []
 		api_data[:data].each do |data|
 			arr << {
-				amount: format_amount(data),
-				description: data['description'],
-				datetime: data['created_at']
+				'formatted_amount' => format_amount(data),
+				'description' => data['description'],
+				'datetime' => data['created_at'],
+				'currency' => data['currency'],
+				'amount' => data['is_credit'] ? -(data['amount']) : data['amount']
 			}
 		end
 		arr
@@ -35,7 +37,7 @@ class LedgerApiDataPresenter
 
 	def format_amount(data)
 		is_credit = data['is_credit'] ? '-' : nil
-		"#{data['currency']}$ #{is_credit}#{data['amount']}"
+		"#{data['currency']}$ #{is_credit}#{'%.2f' % data['amount']}"
 	end
 
 	def formatted_error

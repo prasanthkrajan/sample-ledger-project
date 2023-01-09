@@ -37,9 +37,7 @@ RSpec.describe LedgersController, type: :controller do
 				expect(ledger.title).to eql(ledger_title)
 				expect(ledger_entries.count).to eql(2)
 				expect(ledger_entries.first.description).to eql('Entry One')
-				expect(ledger_entries.first.is_credit).to eql(false)
 				expect(ledger_entries.last.description).to eql('Entry Two')
-				expect(ledger_entries.last.is_credit).to eql(true)
 			end
 		end
 

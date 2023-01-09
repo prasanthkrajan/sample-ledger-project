@@ -80,5 +80,27 @@ RSpec.describe LedgersController, type: :controller do
 				expect(LedgerEntry.all).to be_empty
 			end
 		end
+
+		context 'when ledger entries atrributes are partially empty' do
+			let(:ledger_entries_attributes) do
+				{
+					'0' => {
+						'currency' => 'USD',
+						'amount' => '',
+						'description' => 'Random Description'
+					},
+					'1' => {
+						'currency' => 'JPY',
+						'amount' => '100',
+						'description' => 'Some random description'
+					}
+				}
+			end
+
+			it 'does not create ledger and its entries' do
+				expect { subject }.not_to change {Ledger.count}
+				expect(LedgerEntry.all).to be_empty
+			end
+		end
 	end
 end

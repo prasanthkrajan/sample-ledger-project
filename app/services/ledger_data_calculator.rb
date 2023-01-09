@@ -2,7 +2,7 @@ class LedgerDataCalculator
 	attr_accessor :data, :preferred_currency
 
 	def initialize(ledger_data, preferred_currency = 'USD')
-		self.data = ledger_data ? Array(ledger_data[:data]) : []
+		self.data = ledger_data ? Array(ledger_data) : []
 		self.preferred_currency = preferred_currency
 	end
 

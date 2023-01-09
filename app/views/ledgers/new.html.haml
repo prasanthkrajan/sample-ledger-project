@@ -7,7 +7,7 @@
 				= f.input :title, label: 'Ledger Title', error: 'Ledger title is mandatory', required: true
 			= f.simple_fields_for :ledger_entries do |ff|
 				#field-set-container
-					%fieldset.fieldset.row.form-group
+					%fieldset.fieldset.row.form-group#0
 						.col-sm-4
 							= ff.input :currency
 						.col-sm-4

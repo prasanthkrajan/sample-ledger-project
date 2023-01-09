@@ -1,4 +1,3 @@
-require 'pry'
 class LedgerApiDataPresenter
 	attr_accessor :api_endpoint
 
@@ -10,14 +9,15 @@ class LedgerApiDataPresenter
 		{
 			data: formatted_ledger_data,
 			error: formatted_error,
-			total_amount: LedgerDataCalculator.new(formatted_ledger_data).total_amount
+			total_amount: LedgerDataCalculator.new(formatted_ledger_data).total_amount,
+			title: ledger_title
 		}
 	end
 
 	private
 
 	def api_data
-		Rails.cache.fetch(api_endpoint, expires: 24.hours) do
+		Rails.cache.fetch('api_endpoint', expires: 24.hours) do
 			ApiDataRetriever.call(api_endpoint)
 		end
 	end
@@ -26,7 +26,7 @@ class LedgerApiDataPresenter
 		return [] unless api_data && api_data[:data].present?
 
 		arr = []
-		api_data[:data].each do |data|
+		Array(api_data[:data]).each do |data|
 			arr << {
 				'formatted_amount' => format_amount(data),
 				'description' => data['description'],
@@ -47,5 +47,9 @@ class LedgerApiDataPresenter
 		return unless api_data[:error].present?
 
 		api_data[:error]
+	end
+
+	def ledger_title
+		'My Ledger'
 	end
 end

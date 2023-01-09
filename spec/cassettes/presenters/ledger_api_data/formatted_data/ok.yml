@@ -17,13 +17,55 @@ http_interactions:
       - take-home-test-api.herokuapp.com
   response:
     status:
+      code: 503
+      message: Service Unavailable
+    headers:
+      Connection:
+      - keep-alive
+      Server:
+      - Cowboy
+      Date:
+      - Mon, 09 Jan 2023 18:03:18 GMT
+      Content-Length:
+      - '506'
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n\t<html>\n\t  <head>\n\t\t<meta name=\"viewport\"
+        content=\"width=device-width, initial-scale=1\">\n\t\t<meta charset=\"utf-8\">\n\t\t<title>Application
+        Error</title>\n\t\t<style media=\"screen\">\n\t\t  html,body,iframe {\n\t\t\tmargin:
+        0;\n\t\t\tpadding: 0;\n\t\t  }\n\t\t  html,body {\n\t\t\theight: 100%;\n\t\t\toverflow:
+        hidden;\n\t\t  }\n\t\t  iframe {\n\t\t\twidth: 100%;\n\t\t\theight: 100%;\n\t\t\tborder:
+        0;\n\t\t  }\n\t\t</style>\n\t  </head>\n\t  <body>\n\t\t<iframe src=\"//www.herokucdn.com/error-pages/application-error.html\"></iframe>\n\t
+        \ </body>\n\t</html>"
+  recorded_at: Mon, 09 Jan 2023 18:03:18 GMT
+- request:
+    method: get
+    uri: https://take-home-test-api.herokuapp.com/invoices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - take-home-test-api.herokuapp.com
+  response:
+    status:
       code: 200
       message: OK
     headers:
       Server:
       - Cowboy
       Date:
-      - Sat, 07 Jan 2023 16:05:10 GMT
+      - Mon, 09 Jan 2023 18:03:18 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -38,7 +80,202 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary |-
         W3siYW1vdW50IjoyMy4yNCwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IkdhcyBiaWxsIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6NDYzNywiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Iu++lO++j+++gO++nu+9tu+9su+9vO+9rCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDE0OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjU0LjE4LCJjdXJyZW5jeSI6IlVTRCIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiJSRUY6ICMxMjEzNTNhYmYwOTEyODVmZjcyN2EyNjQ5ZTU4ZGRiYWUyOTAwOTE4Mzc2NTYyYWJlZWQ0OTI3NmYiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo1MS41MSwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1IC0wNTAwIn0seyJhbW91bnQiOjI3LjcsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJVKzFGMzJEIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA2MDAifSx7ImFtb3VudCI6NTM1NCwiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Imh0dHBzOi8vZG9jYmFzZS5pb+OBi+OCieOBruOCpOODs+ODnOOCpOOCuSIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjc0LjYsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJGdWVsIGZvciB0cmlwIHRvIFN0ZWFtIE9mZmljZXMiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo2Ni45MywiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImRlc2NyaXB0aW9uIjoiUmVmdW5kIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6ODkyLCJjdXJyZW5jeSI6IkpQWSIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiLmiZXjgYTmiLvjgZciLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSArMDkwMCJ9LHsiYW1vdW50IjoyOTE4MiwiY3VycmVuY3kiOiJLUlciLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IuyghOq4sOyEuCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn1d
-  recorded_at: Sat, 07 Jan 2023 16:05:11 GMT
+  recorded_at: Mon, 09 Jan 2023 18:03:19 GMT
+- request:
+    method: get
+    uri: https://take-home-test-api.herokuapp.com/invoices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - take-home-test-api.herokuapp.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Mon, 09 Jan 2023 18:03:20 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1275'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siYW1vdW50IjoyMy4yNCwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IkdhcyBiaWxsIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6NDYzNywiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Iu++lO++j+++gO++nu+9tu+9su+9vO+9rCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDE0OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjU0LjE4LCJjdXJyZW5jeSI6IlVTRCIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiJSRUY6ICMxMjEzNTNhYmYwOTEyODVmZjcyN2EyNjQ5ZTU4ZGRiYWUyOTAwOTE4Mzc2NTYyYWJlZWQ0OTI3NmYiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo1MS41MSwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1IC0wNTAwIn0seyJhbW91bnQiOjI3LjcsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJVKzFGMzJEIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA2MDAifSx7ImFtb3VudCI6NTM1NCwiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Imh0dHBzOi8vZG9jYmFzZS5pb+OBi+OCieOBruOCpOODs+ODnOOCpOOCuSIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjc0LjYsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJGdWVsIGZvciB0cmlwIHRvIFN0ZWFtIE9mZmljZXMiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo2Ni45MywiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImRlc2NyaXB0aW9uIjoiUmVmdW5kIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6ODkyLCJjdXJyZW5jeSI6IkpQWSIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiLmiZXjgYTmiLvjgZciLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSArMDkwMCJ9LHsiYW1vdW50IjoyOTE4MiwiY3VycmVuY3kiOiJLUlciLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IuyghOq4sOyEuCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn1d
+  recorded_at: Mon, 09 Jan 2023 18:03:20 GMT
+- request:
+    method: get
+    uri: https://take-home-test-api.herokuapp.com/invoices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - take-home-test-api.herokuapp.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Mon, 09 Jan 2023 18:03:21 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1275'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siYW1vdW50IjoyMy4yNCwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IkdhcyBiaWxsIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6NDYzNywiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Iu++lO++j+++gO++nu+9tu+9su+9vO+9rCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDE0OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjU0LjE4LCJjdXJyZW5jeSI6IlVTRCIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiJSRUY6ICMxMjEzNTNhYmYwOTEyODVmZjcyN2EyNjQ5ZTU4ZGRiYWUyOTAwOTE4Mzc2NTYyYWJlZWQ0OTI3NmYiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo1MS41MSwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1IC0wNTAwIn0seyJhbW91bnQiOjI3LjcsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJVKzFGMzJEIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA2MDAifSx7ImFtb3VudCI6NTM1NCwiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Imh0dHBzOi8vZG9jYmFzZS5pb+OBi+OCieOBruOCpOODs+ODnOOCpOOCuSIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjc0LjYsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJGdWVsIGZvciB0cmlwIHRvIFN0ZWFtIE9mZmljZXMiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo2Ni45MywiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImRlc2NyaXB0aW9uIjoiUmVmdW5kIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6ODkyLCJjdXJyZW5jeSI6IkpQWSIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiLmiZXjgYTmiLvjgZciLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSArMDkwMCJ9LHsiYW1vdW50IjoyOTE4MiwiY3VycmVuY3kiOiJLUlciLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IuyghOq4sOyEuCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn1d
+  recorded_at: Mon, 09 Jan 2023 18:03:21 GMT
+- request:
+    method: get
+    uri: https://take-home-test-api.herokuapp.com/invoices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - take-home-test-api.herokuapp.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Mon, 09 Jan 2023 18:03:23 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1275'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siYW1vdW50IjoyMy4yNCwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IkdhcyBiaWxsIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6NDYzNywiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Iu++lO++j+++gO++nu+9tu+9su+9vO+9rCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDE0OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjU0LjE4LCJjdXJyZW5jeSI6IlVTRCIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiJSRUY6ICMxMjEzNTNhYmYwOTEyODVmZjcyN2EyNjQ5ZTU4ZGRiYWUyOTAwOTE4Mzc2NTYyYWJlZWQ0OTI3NmYiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo1MS41MSwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1IC0wNTAwIn0seyJhbW91bnQiOjI3LjcsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJVKzFGMzJEIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA2MDAifSx7ImFtb3VudCI6NTM1NCwiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Imh0dHBzOi8vZG9jYmFzZS5pb+OBi+OCieOBruOCpOODs+ODnOOCpOOCuSIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjc0LjYsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJGdWVsIGZvciB0cmlwIHRvIFN0ZWFtIE9mZmljZXMiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo2Ni45MywiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImRlc2NyaXB0aW9uIjoiUmVmdW5kIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6ODkyLCJjdXJyZW5jeSI6IkpQWSIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiLmiZXjgYTmiLvjgZciLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSArMDkwMCJ9LHsiYW1vdW50IjoyOTE4MiwiY3VycmVuY3kiOiJLUlciLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IuyghOq4sOyEuCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn1d
+  recorded_at: Mon, 09 Jan 2023 18:03:23 GMT
+- request:
+    method: get
+    uri: https://take-home-test-api.herokuapp.com/invoices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - take-home-test-api.herokuapp.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Mon, 09 Jan 2023 18:03:23 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1275'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siYW1vdW50IjoyMy4yNCwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IkdhcyBiaWxsIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6NDYzNywiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Iu++lO++j+++gO++nu+9tu+9su+9vO+9rCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDE0OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjU0LjE4LCJjdXJyZW5jeSI6IlVTRCIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiJSRUY6ICMxMjEzNTNhYmYwOTEyODVmZjcyN2EyNjQ5ZTU4ZGRiYWUyOTAwOTE4Mzc2NTYyYWJlZWQ0OTI3NmYiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo1MS41MSwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1IC0wNTAwIn0seyJhbW91bnQiOjI3LjcsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJVKzFGMzJEIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA2MDAifSx7ImFtb3VudCI6NTM1NCwiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Imh0dHBzOi8vZG9jYmFzZS5pb+OBi+OCieOBruOCpOODs+ODnOOCpOOCuSIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjc0LjYsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJGdWVsIGZvciB0cmlwIHRvIFN0ZWFtIE9mZmljZXMiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo2Ni45MywiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImRlc2NyaXB0aW9uIjoiUmVmdW5kIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6ODkyLCJjdXJyZW5jeSI6IkpQWSIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiLmiZXjgYTmiLvjgZciLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSArMDkwMCJ9LHsiYW1vdW50IjoyOTE4MiwiY3VycmVuY3kiOiJLUlciLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IuyghOq4sOyEuCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn1d
+  recorded_at: Mon, 09 Jan 2023 18:03:24 GMT
+- request:
+    method: get
+    uri: https://take-home-test-api.herokuapp.com/invoices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - take-home-test-api.herokuapp.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Mon, 09 Jan 2023 18:03:25 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1275'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siYW1vdW50IjoyMy4yNCwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IkdhcyBiaWxsIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6NDYzNywiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Iu++lO++j+++gO++nu+9tu+9su+9vO+9rCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDE0OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjU0LjE4LCJjdXJyZW5jeSI6IlVTRCIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiJSRUY6ICMxMjEzNTNhYmYwOTEyODVmZjcyN2EyNjQ5ZTU4ZGRiYWUyOTAwOTE4Mzc2NTYyYWJlZWQ0OTI3NmYiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo1MS41MSwiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1IC0wNTAwIn0seyJhbW91bnQiOjI3LjcsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJVKzFGMzJEIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA2MDAifSx7ImFtb3VudCI6NTM1NCwiY3VycmVuY3kiOiJKUFkiLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6Imh0dHBzOi8vZG9jYmFzZS5pb+OBi+OCieOBruOCpOODs+ODnOOCpOOCuSIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn0seyJhbW91bnQiOjc0LjYsImN1cnJlbmN5IjoiVVNEIiwiaXNfY3JlZGl0IjpmYWxzZSwiZGVzY3JpcHRpb24iOiJGdWVsIGZvciB0cmlwIHRvIFN0ZWFtIE9mZmljZXMiLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSAtMDQwMCJ9LHsiYW1vdW50Ijo2Ni45MywiY3VycmVuY3kiOiJVU0QiLCJpc19jcmVkaXQiOnRydWUsImRlc2NyaXB0aW9uIjoiUmVmdW5kIiwiY3JlYXRlZF9hdCI6IjIwMjItMDEtMzEgMDU6Mjk6NTUgLTA0MDAifSx7ImFtb3VudCI6ODkyLCJjdXJyZW5jeSI6IkpQWSIsImlzX2NyZWRpdCI6dHJ1ZSwiZGVzY3JpcHRpb24iOiLmiZXjgYTmiLvjgZciLCJjcmVhdGVkX2F0IjoiMjAyMi0wMS0zMSAwNToyOTo1NSArMDkwMCJ9LHsiYW1vdW50IjoyOTE4MiwiY3VycmVuY3kiOiJLUlciLCJpc19jcmVkaXQiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IuyghOq4sOyEuCIsImNyZWF0ZWRfYXQiOiIyMDIyLTAxLTMxIDA1OjI5OjU1ICswOTAwIn1d
+  recorded_at: Mon, 09 Jan 2023 18:03:25 GMT
 - request:
     method: get
     uri: https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
@@ -60,7 +297,7 @@ http_interactions:
       Server:
       - myracloud
       Date:
-      - Sat, 07 Jan 2023 16:05:11 GMT
+      - Mon, 09 Jan 2023 18:03:25 GMT
       Content-Type:
       - text/xml
       Transfer-Encoding:
@@ -72,11 +309,11 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Last-Modified:
-      - Fri, 06 Jan 2023 14:55:11 GMT
+      - Mon, 09 Jan 2023 14:55:09 GMT
       X-Xss-Protection:
       - 1; mode=block
       Expires:
-      - Fri, 06 Jan 2023 15:05:24 GMT
+      - Mon, 09 Jan 2023 15:05:23 GMT
       Cache-Control:
       - max-age=300
       X-Cdn:
@@ -86,23 +323,23 @@ http_interactions:
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<gesmes:Envelope xmlns:gesmes=\"http://www.gesmes.org/xml/2002-08-01\"
         xmlns=\"http://www.ecb.int/vocabulary/2002-08-01/eurofxref\">\n\t<gesmes:subject>Reference
         rates</gesmes:subject>\n\t<gesmes:Sender>\n\t\t<gesmes:name>European Central
-        Bank</gesmes:name>\n\t</gesmes:Sender>\n\t<Cube>\n\t\t<Cube time='2023-01-06'>\n\t\t\t<Cube
-        currency='USD' rate='1.0500'/>\n\t\t\t<Cube currency='JPY' rate='141.30'/>\n\t\t\t<Cube
-        currency='BGN' rate='1.9558'/>\n\t\t\t<Cube currency='CZK' rate='24.054'/>\n\t\t\t<Cube
-        currency='DKK' rate='7.4370'/>\n\t\t\t<Cube currency='GBP' rate='0.88475'/>\n\t\t\t<Cube
-        currency='HUF' rate='396.96'/>\n\t\t\t<Cube currency='PLN' rate='4.6950'/>\n\t\t\t<Cube
-        currency='RON' rate='4.9296'/>\n\t\t\t<Cube currency='SEK' rate='11.2580'/>\n\t\t\t<Cube
-        currency='CHF' rate='0.9864'/>\n\t\t\t<Cube currency='ISK' rate='152.90'/>\n\t\t\t<Cube
-        currency='NOK' rate='10.8070'/>\n\t\t\t<Cube currency='TRY' rate='19.7065'/>\n\t\t\t<Cube
-        currency='AUD' rate='1.5590'/>\n\t\t\t<Cube currency='BRL' rate='5.6034'/>\n\t\t\t<Cube
-        currency='CAD' rate='1.4331'/>\n\t\t\t<Cube currency='CNY' rate='7.2045'/>\n\t\t\t<Cube
-        currency='HKD' rate='8.2006'/>\n\t\t\t<Cube currency='IDR' rate='16468.30'/>\n\t\t\t<Cube
-        currency='ILS' rate='3.7361'/>\n\t\t\t<Cube currency='INR' rate='86.9103'/>\n\t\t\t<Cube
-        currency='KRW' rate='1337.18'/>\n\t\t\t<Cube currency='MXN' rate='20.2645'/>\n\t\t\t<Cube
-        currency='MYR' rate='4.6237'/>\n\t\t\t<Cube currency='NZD' rate='1.6889'/>\n\t\t\t<Cube
-        currency='PHP' rate='58.374'/>\n\t\t\t<Cube currency='SGD' rate='1.4156'/>\n\t\t\t<Cube
-        currency='THB' rate='35.737'/>\n\t\t\t<Cube currency='ZAR' rate='18.2092'/>\n\t\t</Cube>\n\t</Cube>\n</gesmes:Envelope>"
-  recorded_at: Sat, 07 Jan 2023 16:05:11 GMT
+        Bank</gesmes:name>\n\t</gesmes:Sender>\n\t<Cube>\n\t\t<Cube time='2023-01-09'>\n\t\t\t<Cube
+        currency='USD' rate='1.0696'/>\n\t\t\t<Cube currency='JPY' rate='141.35'/>\n\t\t\t<Cube
+        currency='BGN' rate='1.9558'/>\n\t\t\t<Cube currency='CZK' rate='23.990'/>\n\t\t\t<Cube
+        currency='DKK' rate='7.4374'/>\n\t\t\t<Cube currency='GBP' rate='0.88048'/>\n\t\t\t<Cube
+        currency='HUF' rate='397.25'/>\n\t\t\t<Cube currency='PLN' rate='4.6963'/>\n\t\t\t<Cube
+        currency='RON' rate='4.9253'/>\n\t\t\t<Cube currency='SEK' rate='11.1960'/>\n\t\t\t<Cube
+        currency='CHF' rate='0.9865'/>\n\t\t\t<Cube currency='ISK' rate='153.50'/>\n\t\t\t<Cube
+        currency='NOK' rate='10.6108'/>\n\t\t\t<Cube currency='TRY' rate='20.0824'/>\n\t\t\t<Cube
+        currency='AUD' rate='1.5446'/>\n\t\t\t<Cube currency='BRL' rate='5.6475'/>\n\t\t\t<Cube
+        currency='CAD' rate='1.4299'/>\n\t\t\t<Cube currency='CNY' rate='7.2546'/>\n\t\t\t<Cube
+        currency='HKD' rate='8.3508'/>\n\t\t\t<Cube currency='IDR' rate='16661.92'/>\n\t\t\t<Cube
+        currency='ILS' rate='3.7347'/>\n\t\t\t<Cube currency='INR' rate='88.0780'/>\n\t\t\t<Cube
+        currency='KRW' rate='1330.37'/>\n\t\t\t<Cube currency='MXN' rate='20.4825'/>\n\t\t\t<Cube
+        currency='MYR' rate='4.6800'/>\n\t\t\t<Cube currency='NZD' rate='1.6741'/>\n\t\t\t<Cube
+        currency='PHP' rate='58.946'/>\n\t\t\t<Cube currency='SGD' rate='1.4244'/>\n\t\t\t<Cube
+        currency='THB' rate='35.789'/>\n\t\t\t<Cube currency='ZAR' rate='18.2059'/>\n\t\t</Cube>\n\t</Cube>\n</gesmes:Envelope>"
+  recorded_at: Mon, 09 Jan 2023 18:03:25 GMT
 - request:
     method: get
     uri: https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
@@ -124,7 +361,7 @@ http_interactions:
       Server:
       - myracloud
       Date:
-      - Sat, 07 Jan 2023 16:05:12 GMT
+      - Mon, 09 Jan 2023 18:03:26 GMT
       Content-Type:
       - text/xml
       Transfer-Encoding:
@@ -136,11 +373,11 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Last-Modified:
-      - Fri, 06 Jan 2023 14:55:11 GMT
+      - Mon, 09 Jan 2023 14:55:09 GMT
       X-Xss-Protection:
       - 1; mode=block
       Expires:
-      - Fri, 06 Jan 2023 15:05:24 GMT
+      - Mon, 09 Jan 2023 15:05:23 GMT
       Cache-Control:
       - max-age=300
       X-Cdn:
@@ -150,23 +387,23 @@ http_interactions:
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<gesmes:Envelope xmlns:gesmes=\"http://www.gesmes.org/xml/2002-08-01\"
         xmlns=\"http://www.ecb.int/vocabulary/2002-08-01/eurofxref\">\n\t<gesmes:subject>Reference
         rates</gesmes:subject>\n\t<gesmes:Sender>\n\t\t<gesmes:name>European Central
-        Bank</gesmes:name>\n\t</gesmes:Sender>\n\t<Cube>\n\t\t<Cube time='2023-01-06'>\n\t\t\t<Cube
-        currency='USD' rate='1.0500'/>\n\t\t\t<Cube currency='JPY' rate='141.30'/>\n\t\t\t<Cube
-        currency='BGN' rate='1.9558'/>\n\t\t\t<Cube currency='CZK' rate='24.054'/>\n\t\t\t<Cube
-        currency='DKK' rate='7.4370'/>\n\t\t\t<Cube currency='GBP' rate='0.88475'/>\n\t\t\t<Cube
-        currency='HUF' rate='396.96'/>\n\t\t\t<Cube currency='PLN' rate='4.6950'/>\n\t\t\t<Cube
-        currency='RON' rate='4.9296'/>\n\t\t\t<Cube currency='SEK' rate='11.2580'/>\n\t\t\t<Cube
-        currency='CHF' rate='0.9864'/>\n\t\t\t<Cube currency='ISK' rate='152.90'/>\n\t\t\t<Cube
-        currency='NOK' rate='10.8070'/>\n\t\t\t<Cube currency='TRY' rate='19.7065'/>\n\t\t\t<Cube
-        currency='AUD' rate='1.5590'/>\n\t\t\t<Cube currency='BRL' rate='5.6034'/>\n\t\t\t<Cube
-        currency='CAD' rate='1.4331'/>\n\t\t\t<Cube currency='CNY' rate='7.2045'/>\n\t\t\t<Cube
-        currency='HKD' rate='8.2006'/>\n\t\t\t<Cube currency='IDR' rate='16468.30'/>\n\t\t\t<Cube
-        currency='ILS' rate='3.7361'/>\n\t\t\t<Cube currency='INR' rate='86.9103'/>\n\t\t\t<Cube
-        currency='KRW' rate='1337.18'/>\n\t\t\t<Cube currency='MXN' rate='20.2645'/>\n\t\t\t<Cube
-        currency='MYR' rate='4.6237'/>\n\t\t\t<Cube currency='NZD' rate='1.6889'/>\n\t\t\t<Cube
-        currency='PHP' rate='58.374'/>\n\t\t\t<Cube currency='SGD' rate='1.4156'/>\n\t\t\t<Cube
-        currency='THB' rate='35.737'/>\n\t\t\t<Cube currency='ZAR' rate='18.2092'/>\n\t\t</Cube>\n\t</Cube>\n</gesmes:Envelope>"
-  recorded_at: Sat, 07 Jan 2023 16:05:12 GMT
+        Bank</gesmes:name>\n\t</gesmes:Sender>\n\t<Cube>\n\t\t<Cube time='2023-01-09'>\n\t\t\t<Cube
+        currency='USD' rate='1.0696'/>\n\t\t\t<Cube currency='JPY' rate='141.35'/>\n\t\t\t<Cube
+        currency='BGN' rate='1.9558'/>\n\t\t\t<Cube currency='CZK' rate='23.990'/>\n\t\t\t<Cube
+        currency='DKK' rate='7.4374'/>\n\t\t\t<Cube currency='GBP' rate='0.88048'/>\n\t\t\t<Cube
+        currency='HUF' rate='397.25'/>\n\t\t\t<Cube currency='PLN' rate='4.6963'/>\n\t\t\t<Cube
+        currency='RON' rate='4.9253'/>\n\t\t\t<Cube currency='SEK' rate='11.1960'/>\n\t\t\t<Cube
+        currency='CHF' rate='0.9865'/>\n\t\t\t<Cube currency='ISK' rate='153.50'/>\n\t\t\t<Cube
+        currency='NOK' rate='10.6108'/>\n\t\t\t<Cube currency='TRY' rate='20.0824'/>\n\t\t\t<Cube
+        currency='AUD' rate='1.5446'/>\n\t\t\t<Cube currency='BRL' rate='5.6475'/>\n\t\t\t<Cube
+        currency='CAD' rate='1.4299'/>\n\t\t\t<Cube currency='CNY' rate='7.2546'/>\n\t\t\t<Cube
+        currency='HKD' rate='8.3508'/>\n\t\t\t<Cube currency='IDR' rate='16661.92'/>\n\t\t\t<Cube
+        currency='ILS' rate='3.7347'/>\n\t\t\t<Cube currency='INR' rate='88.0780'/>\n\t\t\t<Cube
+        currency='KRW' rate='1330.37'/>\n\t\t\t<Cube currency='MXN' rate='20.4825'/>\n\t\t\t<Cube
+        currency='MYR' rate='4.6800'/>\n\t\t\t<Cube currency='NZD' rate='1.6741'/>\n\t\t\t<Cube
+        currency='PHP' rate='58.946'/>\n\t\t\t<Cube currency='SGD' rate='1.4244'/>\n\t\t\t<Cube
+        currency='THB' rate='35.789'/>\n\t\t\t<Cube currency='ZAR' rate='18.2059'/>\n\t\t</Cube>\n\t</Cube>\n</gesmes:Envelope>"
+  recorded_at: Mon, 09 Jan 2023 18:03:26 GMT
 - request:
     method: get
     uri: https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
@@ -188,7 +425,7 @@ http_interactions:
       Server:
       - myracloud
       Date:
-      - Sat, 07 Jan 2023 16:05:13 GMT
+      - Mon, 09 Jan 2023 18:03:27 GMT
       Content-Type:
       - text/xml
       Transfer-Encoding:
@@ -200,11 +437,11 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Last-Modified:
-      - Fri, 06 Jan 2023 14:55:11 GMT
+      - Mon, 09 Jan 2023 14:55:09 GMT
       X-Xss-Protection:
       - 1; mode=block
       Expires:
-      - Fri, 06 Jan 2023 15:05:24 GMT
+      - Mon, 09 Jan 2023 15:05:23 GMT
       Cache-Control:
       - max-age=300
       X-Cdn:
@@ -214,23 +451,23 @@ http_interactions:
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<gesmes:Envelope xmlns:gesmes=\"http://www.gesmes.org/xml/2002-08-01\"
         xmlns=\"http://www.ecb.int/vocabulary/2002-08-01/eurofxref\">\n\t<gesmes:subject>Reference
         rates</gesmes:subject>\n\t<gesmes:Sender>\n\t\t<gesmes:name>European Central
-        Bank</gesmes:name>\n\t</gesmes:Sender>\n\t<Cube>\n\t\t<Cube time='2023-01-06'>\n\t\t\t<Cube
-        currency='USD' rate='1.0500'/>\n\t\t\t<Cube currency='JPY' rate='141.30'/>\n\t\t\t<Cube
-        currency='BGN' rate='1.9558'/>\n\t\t\t<Cube currency='CZK' rate='24.054'/>\n\t\t\t<Cube
-        currency='DKK' rate='7.4370'/>\n\t\t\t<Cube currency='GBP' rate='0.88475'/>\n\t\t\t<Cube
-        currency='HUF' rate='396.96'/>\n\t\t\t<Cube currency='PLN' rate='4.6950'/>\n\t\t\t<Cube
-        currency='RON' rate='4.9296'/>\n\t\t\t<Cube currency='SEK' rate='11.2580'/>\n\t\t\t<Cube
-        currency='CHF' rate='0.9864'/>\n\t\t\t<Cube currency='ISK' rate='152.90'/>\n\t\t\t<Cube
-        currency='NOK' rate='10.8070'/>\n\t\t\t<Cube currency='TRY' rate='19.7065'/>\n\t\t\t<Cube
-        currency='AUD' rate='1.5590'/>\n\t\t\t<Cube currency='BRL' rate='5.6034'/>\n\t\t\t<Cube
-        currency='CAD' rate='1.4331'/>\n\t\t\t<Cube currency='CNY' rate='7.2045'/>\n\t\t\t<Cube
-        currency='HKD' rate='8.2006'/>\n\t\t\t<Cube currency='IDR' rate='16468.30'/>\n\t\t\t<Cube
-        currency='ILS' rate='3.7361'/>\n\t\t\t<Cube currency='INR' rate='86.9103'/>\n\t\t\t<Cube
-        currency='KRW' rate='1337.18'/>\n\t\t\t<Cube currency='MXN' rate='20.2645'/>\n\t\t\t<Cube
-        currency='MYR' rate='4.6237'/>\n\t\t\t<Cube currency='NZD' rate='1.6889'/>\n\t\t\t<Cube
-        currency='PHP' rate='58.374'/>\n\t\t\t<Cube currency='SGD' rate='1.4156'/>\n\t\t\t<Cube
-        currency='THB' rate='35.737'/>\n\t\t\t<Cube currency='ZAR' rate='18.2092'/>\n\t\t</Cube>\n\t</Cube>\n</gesmes:Envelope>"
-  recorded_at: Sat, 07 Jan 2023 16:05:13 GMT
+        Bank</gesmes:name>\n\t</gesmes:Sender>\n\t<Cube>\n\t\t<Cube time='2023-01-09'>\n\t\t\t<Cube
+        currency='USD' rate='1.0696'/>\n\t\t\t<Cube currency='JPY' rate='141.35'/>\n\t\t\t<Cube
+        currency='BGN' rate='1.9558'/>\n\t\t\t<Cube currency='CZK' rate='23.990'/>\n\t\t\t<Cube
+        currency='DKK' rate='7.4374'/>\n\t\t\t<Cube currency='GBP' rate='0.88048'/>\n\t\t\t<Cube
+        currency='HUF' rate='397.25'/>\n\t\t\t<Cube currency='PLN' rate='4.6963'/>\n\t\t\t<Cube
+        currency='RON' rate='4.9253'/>\n\t\t\t<Cube currency='SEK' rate='11.1960'/>\n\t\t\t<Cube
+        currency='CHF' rate='0.9865'/>\n\t\t\t<Cube currency='ISK' rate='153.50'/>\n\t\t\t<Cube
+        currency='NOK' rate='10.6108'/>\n\t\t\t<Cube currency='TRY' rate='20.0824'/>\n\t\t\t<Cube
+        currency='AUD' rate='1.5446'/>\n\t\t\t<Cube currency='BRL' rate='5.6475'/>\n\t\t\t<Cube
+        currency='CAD' rate='1.4299'/>\n\t\t\t<Cube currency='CNY' rate='7.2546'/>\n\t\t\t<Cube
+        currency='HKD' rate='8.3508'/>\n\t\t\t<Cube currency='IDR' rate='16661.92'/>\n\t\t\t<Cube
+        currency='ILS' rate='3.7347'/>\n\t\t\t<Cube currency='INR' rate='88.0780'/>\n\t\t\t<Cube
+        currency='KRW' rate='1330.37'/>\n\t\t\t<Cube currency='MXN' rate='20.4825'/>\n\t\t\t<Cube
+        currency='MYR' rate='4.6800'/>\n\t\t\t<Cube currency='NZD' rate='1.6741'/>\n\t\t\t<Cube
+        currency='PHP' rate='58.946'/>\n\t\t\t<Cube currency='SGD' rate='1.4244'/>\n\t\t\t<Cube
+        currency='THB' rate='35.789'/>\n\t\t\t<Cube currency='ZAR' rate='18.2059'/>\n\t\t</Cube>\n\t</Cube>\n</gesmes:Envelope>"
+  recorded_at: Mon, 09 Jan 2023 18:03:27 GMT
 - request:
     method: get
     uri: https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
@@ -252,7 +489,7 @@ http_interactions:
       Server:
       - myracloud
       Date:
-      - Sat, 07 Jan 2023 16:05:14 GMT
+      - Mon, 09 Jan 2023 18:03:27 GMT
       Content-Type:
       - text/xml
       Transfer-Encoding:
@@ -264,11 +501,11 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Last-Modified:
-      - Fri, 06 Jan 2023 14:55:11 GMT
+      - Mon, 09 Jan 2023 14:55:09 GMT
       X-Xss-Protection:
       - 1; mode=block
       Expires:
-      - Fri, 06 Jan 2023 15:05:24 GMT
+      - Mon, 09 Jan 2023 15:05:23 GMT
       Cache-Control:
       - max-age=300
       X-Cdn:
@@ -278,21 +515,21 @@ http_interactions:
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<gesmes:Envelope xmlns:gesmes=\"http://www.gesmes.org/xml/2002-08-01\"
         xmlns=\"http://www.ecb.int/vocabulary/2002-08-01/eurofxref\">\n\t<gesmes:subject>Reference
         rates</gesmes:subject>\n\t<gesmes:Sender>\n\t\t<gesmes:name>European Central
-        Bank</gesmes:name>\n\t</gesmes:Sender>\n\t<Cube>\n\t\t<Cube time='2023-01-06'>\n\t\t\t<Cube
-        currency='USD' rate='1.0500'/>\n\t\t\t<Cube currency='JPY' rate='141.30'/>\n\t\t\t<Cube
-        currency='BGN' rate='1.9558'/>\n\t\t\t<Cube currency='CZK' rate='24.054'/>\n\t\t\t<Cube
-        currency='DKK' rate='7.4370'/>\n\t\t\t<Cube currency='GBP' rate='0.88475'/>\n\t\t\t<Cube
-        currency='HUF' rate='396.96'/>\n\t\t\t<Cube currency='PLN' rate='4.6950'/>\n\t\t\t<Cube
-        currency='RON' rate='4.9296'/>\n\t\t\t<Cube currency='SEK' rate='11.2580'/>\n\t\t\t<Cube
-        currency='CHF' rate='0.9864'/>\n\t\t\t<Cube currency='ISK' rate='152.90'/>\n\t\t\t<Cube
-        currency='NOK' rate='10.8070'/>\n\t\t\t<Cube currency='TRY' rate='19.7065'/>\n\t\t\t<Cube
-        currency='AUD' rate='1.5590'/>\n\t\t\t<Cube currency='BRL' rate='5.6034'/>\n\t\t\t<Cube
-        currency='CAD' rate='1.4331'/>\n\t\t\t<Cube currency='CNY' rate='7.2045'/>\n\t\t\t<Cube
-        currency='HKD' rate='8.2006'/>\n\t\t\t<Cube currency='IDR' rate='16468.30'/>\n\t\t\t<Cube
-        currency='ILS' rate='3.7361'/>\n\t\t\t<Cube currency='INR' rate='86.9103'/>\n\t\t\t<Cube
-        currency='KRW' rate='1337.18'/>\n\t\t\t<Cube currency='MXN' rate='20.2645'/>\n\t\t\t<Cube
-        currency='MYR' rate='4.6237'/>\n\t\t\t<Cube currency='NZD' rate='1.6889'/>\n\t\t\t<Cube
-        currency='PHP' rate='58.374'/>\n\t\t\t<Cube currency='SGD' rate='1.4156'/>\n\t\t\t<Cube
-        currency='THB' rate='35.737'/>\n\t\t\t<Cube currency='ZAR' rate='18.2092'/>\n\t\t</Cube>\n\t</Cube>\n</gesmes:Envelope>"
-  recorded_at: Sat, 07 Jan 2023 16:05:15 GMT
+        Bank</gesmes:name>\n\t</gesmes:Sender>\n\t<Cube>\n\t\t<Cube time='2023-01-09'>\n\t\t\t<Cube
+        currency='USD' rate='1.0696'/>\n\t\t\t<Cube currency='JPY' rate='141.35'/>\n\t\t\t<Cube
+        currency='BGN' rate='1.9558'/>\n\t\t\t<Cube currency='CZK' rate='23.990'/>\n\t\t\t<Cube
+        currency='DKK' rate='7.4374'/>\n\t\t\t<Cube currency='GBP' rate='0.88048'/>\n\t\t\t<Cube
+        currency='HUF' rate='397.25'/>\n\t\t\t<Cube currency='PLN' rate='4.6963'/>\n\t\t\t<Cube
+        currency='RON' rate='4.9253'/>\n\t\t\t<Cube currency='SEK' rate='11.1960'/>\n\t\t\t<Cube
+        currency='CHF' rate='0.9865'/>\n\t\t\t<Cube currency='ISK' rate='153.50'/>\n\t\t\t<Cube
+        currency='NOK' rate='10.6108'/>\n\t\t\t<Cube currency='TRY' rate='20.0824'/>\n\t\t\t<Cube
+        currency='AUD' rate='1.5446'/>\n\t\t\t<Cube currency='BRL' rate='5.6475'/>\n\t\t\t<Cube
+        currency='CAD' rate='1.4299'/>\n\t\t\t<Cube currency='CNY' rate='7.2546'/>\n\t\t\t<Cube
+        currency='HKD' rate='8.3508'/>\n\t\t\t<Cube currency='IDR' rate='16661.92'/>\n\t\t\t<Cube
+        currency='ILS' rate='3.7347'/>\n\t\t\t<Cube currency='INR' rate='88.0780'/>\n\t\t\t<Cube
+        currency='KRW' rate='1330.37'/>\n\t\t\t<Cube currency='MXN' rate='20.4825'/>\n\t\t\t<Cube
+        currency='MYR' rate='4.6800'/>\n\t\t\t<Cube currency='NZD' rate='1.6741'/>\n\t\t\t<Cube
+        currency='PHP' rate='58.946'/>\n\t\t\t<Cube currency='SGD' rate='1.4244'/>\n\t\t\t<Cube
+        currency='THB' rate='35.789'/>\n\t\t\t<Cube currency='ZAR' rate='18.2059'/>\n\t\t</Cube>\n\t</Cube>\n</gesmes:Envelope>"
+  recorded_at: Mon, 09 Jan 2023 18:03:27 GMT
 recorded_with: VCR 6.1.0

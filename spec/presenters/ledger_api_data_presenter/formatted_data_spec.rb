@@ -1,5 +1,5 @@
 require "rails_helper"
-
+require 'pry'
 RSpec.describe LedgerApiDataPresenter do
 	let(:presenter) { described_class.new(api_endpoint) }
 
@@ -81,9 +81,11 @@ RSpec.describe LedgerApiDataPresenter do
 					}
 				],
 				error: nil,
-				total_amount: 'USD 9005.92'
+				total_amount: 'USD 9183.92',
+				title: 'My Ledger'
 			}
 		end
+		let(:expected_data_keys) { [:data, :error, :total_amount, :title] }
 
 		context 'when API endpoint is valid and data is retrievable', vcr: 'presenters/ledger_api_data/formatted_data/converts_mock_data_ok' do
 			let(:expected_data_format) { valid_data_format }
@@ -169,7 +171,7 @@ RSpec.describe LedgerApiDataPresenter do
 			end
 
 			it 'returns API data in expected format' do
-				expect(subject.keys).to match_array([:data, :error, :total_amount])
+				expect(subject.keys).to match_array(expected_data_keys)
 				expect(subject).to eql(expected_data_format)
 			end
 		end
@@ -184,7 +186,8 @@ RSpec.describe LedgerApiDataPresenter do
 				{
 					data: [],
 					error: 'API endpoint unavailable',
-					total_amount: 'USD 0'
+					total_amount: 'USD 0',
+					title: 'My Ledger'
 				}
 			end
 
@@ -193,17 +196,17 @@ RSpec.describe LedgerApiDataPresenter do
 			end
 
 			it 'returns API data in expected format' do
-				expect(subject.keys).to match_array([:data, :error, :total_amount])
+				expect(subject.keys).to match_array(expected_data_keys)
 				expect(subject).to eql(expected_data_format)
 			end
 		end
 
 		context 'when interacting with a real valid API endpoint', vcr: 'presenters/ledger_api_data/formatted_data/ok' do
-			let(:api_endpoint) { 'https://take-home-test-api.herokuapp.com/invoices' }
+			let(:api_endpoint) { ENV['API_ENDPOINT'] }
 			let(:expected_data_format) { valid_data_format }
 
 			it 'returns API data in expected format' do
-				expect(subject.keys).to match_array([:data, :error, :total_amount])
+				expect(subject.keys).to match_array(expected_data_keys)
 				expect(subject).to eql(expected_data_format)
 			end
 		end
@@ -214,12 +217,13 @@ RSpec.describe LedgerApiDataPresenter do
 				{
 					data: [],
 					error: 'Unable to fetch data due to error 404',
-					total_amount: 'USD 0'
+					total_amount: 'USD 0',
+					title: 'My Ledger'
 				}
 			end
 
 			it 'returns empty API data and error message' do
-				expect(subject.keys).to match_array([:data, :error, :total_amount])
+				expect(subject.keys).to match_array(expected_data_keys)
 				expect(subject).to eql(expected_data_format)
 			end
 		end

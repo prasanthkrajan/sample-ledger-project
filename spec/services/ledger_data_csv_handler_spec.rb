@@ -1,5 +1,5 @@
 require "rails_helper"
-require 'pry'
+
 RSpec.describe LedgerDataCsvHandler do
 	let(:csv_handler) { described_class.new(csv_data: csv_data, csv_filename: csv_filename) }
 	let(:csv_data) do

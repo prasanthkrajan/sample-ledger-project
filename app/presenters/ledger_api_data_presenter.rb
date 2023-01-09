@@ -1,3 +1,4 @@
+require 'pry'
 class LedgerApiDataPresenter
 	attr_accessor :api_endpoint
 
@@ -16,7 +17,9 @@ class LedgerApiDataPresenter
 	private
 
 	def api_data
-		@api_data ||= ApiDataRetriever.call(api_endpoint)
+		Rails.cache.fetch(api_endpoint, expires: 24.hours) do
+			ApiDataRetriever.call(api_endpoint)
+		end
 	end
 
 	def formatted_ledger_data

@@ -1,5 +1,6 @@
 class ApiDataRetriever
 	def self.call(endpoint)
+		puts 'hits retriever'
 		uri = URI(endpoint)
 		response = Net::HTTP.get_response(uri)
 		if response.is_a?(Net::HTTPSuccess)

@@ -35,7 +35,7 @@ class LedgersController < ApplicationController
 		if ledger.save
 			flash[:success] = 'Ledger created successfully'
     else
-    	flash[:error] = ledger.errors.full_messages.first
+    	flash[:error] = ledger.errors.full_messages
     end
     redirect_to ledgers_path
 	end

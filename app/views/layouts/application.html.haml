@@ -10,5 +10,10 @@
   %body
     - flash.each do |type, msg|
       .alert.alert-info
-        = msg
+        - if type == 'error'
+          - Array(msg).each do |m|
+            = m
+            %br
+        - else
+          = msg
     = yield

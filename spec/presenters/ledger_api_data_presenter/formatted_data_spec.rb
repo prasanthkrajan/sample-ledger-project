@@ -1,5 +1,5 @@
 require "rails_helper"
-require 'pry'
+
 RSpec.describe LedgerApiDataPresenter do
 	let(:presenter) { described_class.new(api_endpoint) }
 

@@ -31,7 +31,12 @@ class LedgersController < ApplicationController
 	end
 
 	def create
-		Ledger.create(ledger_params);   
+		ledger = Ledger.new(ledger_params)
+		if ledger.save
+			flash[:success] = 'Ledger created successfully'
+    else
+    	flash[:error] = ledger.errors.full_messages.first
+    end
     redirect_to ledgers_path
 	end
 

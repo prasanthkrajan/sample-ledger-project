@@ -1,24 +1,32 @@
-# README
+# Degica Take Home Test - Internal Ledger
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Development Setup
 
-Things you may want to cover:
+1. Ensure you run `bundle install`, and `rake db:reset`, prior to `rails s`
 
-* Ruby version
+### Background
 
-* System dependencies
+#### Request 1
 
-* Configuration
+* first version of the application
+* retrieves the data from API, and performs caching
+* displays developer-friendly error message, if the endpoint is down
+* API endpoint can be easily changed from `application.yml`
 
-* Database creation
+#### Request 2
 
-* Database initialization
+* uses `LedgerDataCalculator` to calculate the total amount, with `USD` as the preferred currency
+* can switch currency by passing in a currency code as an argument in `LedgerDataCalculator`
+* currency conversion is done using `eu_central_bank` gem
 
-* How to run the test suite
+#### Request 3
 
-* Services (job queues, cache servers, search engines, etc.)
+* uses `LedgerDataCsvHandler` to generate data related to csv generation
+* generates csv with formatted amount and raw amount for accounting purpose
 
-* Deployment instructions
 
-* ...
+#### Request 4
+
+* allows user to enter multiple ledger entries from a form and create a new ledger
+* all fields in ledger entries are made mandatory
+* potential improvement: to allow users to use the downloaded csv as a template and upload with prefilled data to create new ledger (alternative to filling in forms with multiple entries)

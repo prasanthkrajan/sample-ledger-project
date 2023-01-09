@@ -1,0 +1,31 @@
+.container
+	.heading
+		= @ledger[:title]
+	- if @ledger[:data].present?
+		.total-entries
+			= "Total Entries: #{@ledger[:data].count}"
+		.content
+			%table.table.table-striped
+				%thead
+					%tr
+						%td.col-3 Amount
+						%td.col-5 Description
+						%td.col-4 Datetime
+				%tbody
+					- @ledger[:data].each do |data|
+						%tr
+							%td.col-3
+								= data['formatted_amount']
+							%td.col-5 
+								= data['description']
+							%td.col-4 
+								= data['datetime']
+		.footer.fixed-bottom
+			= "Total Amount: #{@ledger[:total_amount]}"
+			%br
+			= button_to 'Export to CSV', export_path(csv_data: @ledger[:data], csv_filename: "My Ledger - #{DateTime.now}", format: 'csv'), class: "btn btn-primary"
+	- else
+		.error
+			= @ledger[:error] || 'Unable to fetch data from API'
+				
+				

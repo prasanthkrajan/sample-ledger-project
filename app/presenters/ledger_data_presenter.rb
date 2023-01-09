@@ -3,14 +3,15 @@ class LedgerDataPresenter
 
 	def initialize(resource)
 		self.resource = resource
-		self.ledger_entries = resource.ledger_entries
+		self.ledger_entries = resource.try(:ledger_entries)
 	end
 
 	def formatted_data
 		{
 			data: formatted_ledger_data,
 			error: formatted_error,
-			total_amount: LedgerDataCalculator.new(formatted_ledger_data).total_amount
+			total_amount: LedgerDataCalculator.new(formatted_ledger_data).total_amount,
+			title: resource.try(:title)
 		}
 	end
 
@@ -37,5 +38,6 @@ class LedgerDataPresenter
 	end
 
 	def formatted_error
+		return 'Resource not available' unless resource.present?
 	end
 end

@@ -15,11 +15,11 @@
 					- @my_ledger[:data].each do |data|
 						%tr
 							%td.col-3
-								= data[:amount]
+								= data['formatted_amount']
 							%td.col-5 
-								= data[:description]
+								= data['description']
 							%td.col-4 
-								= data[:datetime]
+								= data['datetime']
 		.footer.fixed-bottom
 			= "Total Amount: #{@my_ledger[:total_amount]}"
 			%br

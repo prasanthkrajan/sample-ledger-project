@@ -40,11 +40,11 @@ class LedgersController < ApplicationController
 
 	def show
 		unless resource.present?
-			flash[:error] = "Resource with ID r#{params[:id]} not available"
+			flash[:error] = "Resource with ID #{params[:id]} not available"
 			redirect_to ledgers_path
+			return
 		end
-		# redirect_to ledgers_path
-		# @ledger = LedgerDataPresenter.new(resource).formatted_data
+		@ledger = LedgerDataPresenter.new(resource).formatted_data
 	end
 
 	private

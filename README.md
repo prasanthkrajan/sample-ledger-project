@@ -1,4 +1,4 @@
-# Degica Take Home Test - Internal Ledger
+# Sample Ledger Project
 
 ### Development Setup
 

@@ -2,7 +2,7 @@ class LedgersController < ApplicationController
 	API_ENDPOINT = ENV['API_ENDPOINT']
 
 	def my_ledger
-		@my_ledger = LedgerApiDataPresenter.new(API_ENDPOINT).formatted_data
+		@my_ledger ||= LedgerApiDataPresenter.new(API_ENDPOINT).formatted_data
 	end
 
 	def export
@@ -40,7 +40,7 @@ class LedgersController < ApplicationController
 			redirect_to ledgers_path
 			return
 		end
-		@ledger = LedgerDataPresenter.new(resource).formatted_data
+		@ledger ||= LedgerDataPresenter.new(resource).formatted_data
 	end
 
 	private
@@ -50,6 +50,6 @@ class LedgersController < ApplicationController
   end
 
   def resource
-  	@resource = Ledger.find(params[:id]) rescue nil
+  	@resource ||= Ledger.find(params[:id]) rescue nil
   end
 end
